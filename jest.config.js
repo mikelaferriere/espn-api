@@ -2,6 +2,7 @@
 const config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  testPathIgnorePatterns: ['<rootDir>/build'],
 }
 
 module.exports = config

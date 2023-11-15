@@ -1,6 +1,6 @@
 /** jest test file to test src/index.ts */
 
-import { helloWorld } from '../index'
+import { helloWorld } from '../src/index'
 
 describe('index module', () => {
   test('helloWorld', () => {
