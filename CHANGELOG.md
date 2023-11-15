@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.1.1
+
+### Patch Changes
+
+- 0f6653b: Fix README.md file
+
 ## 0.1.0
 
 ### Minor Changes
