@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.1.2
+
+### Patch Changes
+
+- d525948: attempt to fix module exports and package building
+
 ## 0.1.1
 
 ### Patch Changes
