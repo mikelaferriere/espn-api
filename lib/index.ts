@@ -20,3 +20,12 @@ export const helloWorld = () => {
 // fetchMLBGameDetails("401581097").then(console.dir)
 // fetchNFLGameDetails("1401547345").then(console.dir)
 // fetchNHLGameDetails("401559462").then(console.dir)
+
+export {
+  fetchMLBGameDetails,
+  fetchNFLGameDetails,
+  fetchNHLGameDetails,
+  fetchRawMLBScoreboard,
+  fetchRawNFLScoreboard,
+  fetchRawNHLScoreboard,
+}
