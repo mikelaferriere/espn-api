@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/espn-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Typescript library for accessing ESPN's Public API",
   "keywords": [],
   "author": "Mike Laferriere",
