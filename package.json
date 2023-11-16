@@ -10,6 +10,7 @@
     "url": "git+https://git@github.com/mikelaferriere/espn-api.git"
   },
   "main": "build/lib/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc",
     "deploy": "rollup -c --bundleConfigAsCjs",
