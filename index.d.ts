@@ -1,4 +1,4 @@
-interface BaseScoreboard {
+export interface BaseScoreboard {
   id: string
   name: string
   abbreviation: string
@@ -6,7 +6,7 @@ interface BaseScoreboard {
   events: Event[]
 }
 
-interface SportingEvent {
+export interface SportingEvent {
   id: string
   name: string
   shortName: string
@@ -14,7 +14,7 @@ interface SportingEvent {
   awayTeam: Team
 }
 
-interface Team {
+export interface Team {
   id: string
   name: string
   abbreviation: string
@@ -24,19 +24,19 @@ interface Team {
   logo: string
 }
 
-interface GameDetails {
+export interface GameDetails {
   homeTeam: Team
   awayTeam: Team
   plays: Play[]
 }
 
-interface PlayType {
+export interface PlayType {
   id: string
   text: string
   abbreviation: string
 }
 
-interface Play {
+export interface Play {
   id: string
   type: PlayType
   text: string

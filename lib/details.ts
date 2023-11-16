@@ -6,6 +6,7 @@
 
 import axios from 'axios'
 import { getTeam } from './utils'
+import { Play, GameDetails } from '../index'
 
 const mapToPlay = (data: Record<string, any>): Play => {
   const { id, type, text, awayScore, homeScore, scoringPlay, team } = data

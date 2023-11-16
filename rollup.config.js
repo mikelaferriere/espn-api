@@ -9,6 +9,7 @@ const config = [
       format: 'cjs',
       sourcemap: true,
     },
+    external: ["axios"],
     plugins: [typescript()]
   }, {
     input: 'index.d.ts',
