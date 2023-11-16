@@ -1,3 +1,5 @@
+import { Team } from '../index'
+
 /**
  * From a list of competitors and a home or away team, return the team
  *

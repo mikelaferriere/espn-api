@@ -6,6 +6,7 @@
 
 import axios from 'axios'
 import { getTeam } from './utils'
+import { BaseScoreboard, SportingEvent } from '../index'
 
 const mapToScoreboard = (data: Record<string, any>): BaseScoreboard => {
   const { leagues, events } = data
