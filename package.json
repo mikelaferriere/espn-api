@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "deploy": "rollup -c --bundleConfigAsCjs",
+    "deploy": "rollup -c",
     "format:check": "prettier . --check",
     "format:fix": "prettier --write .",
     "lint": "eslint .",

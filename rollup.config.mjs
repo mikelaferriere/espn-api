@@ -14,7 +14,7 @@ const config = [
   {
     input: 'index.d.ts',
     output: {
-      file: 'build/index.d.ts',
+      file: 'build/dts/index.d.ts',
       format: 'es',
     },
     plugins: [dts()],
