@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.2.2
+
+### Patch Changes
+
+- 0d501d0: Don't delete lib
+
 ## 0.2.1
 
 ### Patch Changes
