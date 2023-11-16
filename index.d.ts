@@ -23,3 +23,25 @@ interface Team {
   location: string
   logo: string
 }
+
+interface GameDetails {
+  homeTeam: Team
+  awayTeam: Team
+  plays: Play[]
+}
+
+interface PlayType {
+  id: string
+  text: string
+  abbreviation: string
+}
+
+interface Play {
+  id: string
+  type: PlayType
+  text: string
+  scoringPlay: boolean
+  homeScore: number
+  awayScore: number
+  team?: string
+}

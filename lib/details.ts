@@ -7,28 +7,6 @@
 import axios from 'axios'
 import { getTeam } from './utils'
 
-interface GameDetails {
-  homeTeam: Team
-  awayTeam: Team
-  plays: Play[]
-}
-
-interface PlayType {
-  id: string
-  text: string
-  abbreviation: string
-}
-
-interface Play {
-  id: string
-  type: PlayType
-  text: string
-  scoringPlay: boolean
-  homeScore: number
-  awayScore: number
-  team?: string
-}
-
 const mapToPlay = (data: Record<string, any>): Play => {
   const { id, type, text, awayScore, homeScore, scoringPlay, team } = data
   return {
