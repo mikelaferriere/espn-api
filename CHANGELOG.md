@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.1.4
+
+### Patch Changes
+
+- 403ad35: attempt two of fixing exports
+
 ## 0.1.3
 
 ### Patch Changes
