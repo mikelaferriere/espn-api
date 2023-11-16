@@ -7792,7 +7792,7 @@ describe('game details module', () => {
         logo: undefined,
         shortDisplayName: undefined,
       },
-      plays: undefined
+      plays: undefined,
     })
   })
 

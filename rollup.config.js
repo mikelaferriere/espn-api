@@ -1,5 +1,5 @@
-import typescript from 'rollup-plugin-typescript2';
-import {dts} from "rollup-plugin-dts";
+import typescript from 'rollup-plugin-typescript2'
+import { dts } from 'rollup-plugin-dts'
 
 const config = [
   {
@@ -9,16 +9,17 @@ const config = [
       format: 'cjs',
       sourcemap: true,
     },
-    external: ["axios"],
-    plugins: [typescript()]
-  }, {
+    external: ['axios'],
+    plugins: [typescript()],
+  },
+  {
     input: 'index.d.ts',
     output: {
       file: 'build/index.d.ts',
-      format: 'es'
+      format: 'es',
     },
-    plugins: [dts()]
-  }
-];
+    plugins: [dts()],
+  },
+]
 
-export default config;
+export default config
