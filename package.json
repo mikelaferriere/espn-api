@@ -12,7 +12,7 @@
   "main": "build/lib/index.js",
   "scripts": {
     "build": "tsc",
-    "deploy": "rollup -c",
+    "deploy": "rollup -c --bundleConfigAsCjs",
     "format:check": "prettier . --check",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
