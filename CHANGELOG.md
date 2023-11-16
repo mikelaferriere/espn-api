@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.2.5
+
+### Patch Changes
+
+- 942afc7: fix
+
 ## 0.2.4
 
 ### Patch Changes
