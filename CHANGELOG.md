@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.1.3
+
+### Patch Changes
+
+- 4bcbfac: fix type exports
+
 ## 0.1.2
 
 ### Patch Changes
