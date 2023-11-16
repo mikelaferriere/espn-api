@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://git@github.com/mikelaferriere/espn-api.git"
   },
-  "main": "build/lib/index.js",
+  "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
     "build",
