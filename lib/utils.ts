@@ -1,4 +1,4 @@
-import { Team } from '../index'
+import { Team } from '../types'
 
 /**
  * From a list of competitors and a home or away team, return the team

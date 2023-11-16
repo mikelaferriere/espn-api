@@ -12,9 +12,9 @@ const config = [
     plugins: [typescript()],
   },
   {
-    input: 'index.d.ts',
+    input: 'types.d.ts',
     output: {
-      file: 'build/dts/index.d.ts',
+      file: 'build/dts/types.d.ts',
       format: 'es',
     },
     plugins: [dts()],
