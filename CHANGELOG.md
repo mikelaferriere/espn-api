@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.2.0
+
+### Minor Changes
+
+- 0078b3e: More stable build package with available type exports
+
 ## 0.1.4
 
 ### Patch Changes
