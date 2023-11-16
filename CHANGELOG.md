@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.2.7
+
+### Patch Changes
+
+- 5b20724: another
+- 2397650: ensure types.d.ts file exists in build
+
 ## 0.2.6
 
 ### Patch Changes
