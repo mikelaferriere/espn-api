@@ -17,3 +17,5 @@ export {
   fetchRawNFLScoreboard,
   fetchRawNHLScoreboard,
 }
+
+export * from './types';
