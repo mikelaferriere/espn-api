@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.2.6
+
+### Patch Changes
+
+- e1a98c5: another fic
+
 ## 0.2.5
 
 ### Patch Changes
