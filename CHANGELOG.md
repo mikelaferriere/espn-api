@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.2.3
+
+### Patch Changes
+
+- 2d15ba6: another rollup change for testing
+
 ## 0.2.2
 
 ### Patch Changes
