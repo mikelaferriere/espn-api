@@ -9,16 +9,8 @@
     "type": "git",
     "url": "git+https://git@github.com/mikelaferriere/espn-api.git"
   },
-  "main": "build/lib/index.js",
-  "exports": {
-    ".": {
-      "types": {
-        "default": "./index.d.ts"
-      }
-    },
-    "./package.json": "./package.json"
-  },
-  "types": "./index.d.ts",
+  "main": "build/lib/index",
+  "types": "build/lib/index.d.ts",
   "files": [
     "build",
     "lib"
