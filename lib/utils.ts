@@ -1,4 +1,24 @@
-import { Team } from './types'
+import { League, Team } from './types'
+
+/** 
+ * Convert the league enum to the url string
+ * @param league - league enum
+ * @returns url string
+ */
+export const enumToUrlString = (league: League): string => {
+  switch (league) {
+    case League.MLB:
+      return "baseball/mlb"
+    case League.NBA:
+      return "basketball/nba"
+    case League.NFL:
+      return "football/nfl"
+    case League.NHL:
+      return "hockey/nhl"
+    default:
+      throw Error(`Leauge (${league}) not supported`)
+  }
+}
 
 /**
  * From a list of competitors and a home or away team, return the team

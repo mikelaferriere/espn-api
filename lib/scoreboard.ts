@@ -5,7 +5,7 @@
  */
 
 import axios from 'axios'
-import { getTeam } from './utils'
+import { enumToUrlString, getTeam } from './utils'
 import { BaseScoreboard, League, SportingEvent } from './types'
 
 const mapToScoreboard = (data: Record<string, any>): BaseScoreboard => {
@@ -34,7 +34,9 @@ const mapToScoreboard = (data: Record<string, any>): BaseScoreboard => {
  * @returns {Promise<BaseScoreboard>}
  */
 export const fetchScoreboard = (league: League): Promise<BaseScoreboard> => {
+  const leagueUrlString = enumToUrlString(league)
+
   return axios
-     .get(`https://site.api.espn.com/apis/site/v2/sports/${league}/scoreboard`)
+     .get(`https://site.api.espn.com/apis/site/v2/sports/${leagueUrlString}/scoreboard`)
      .then(({ data }) => mapToScoreboard(data))
 }

@@ -1,16 +1,12 @@
 import {
-  fetchMLBGameDetails,
-  fetchNFLGameDetails,
-  fetchNHLGameDetails,
+  fetchGameDetails,
 } from './details'
 import {
   fetchScoreboard
 } from './scoreboard'
 
 export {
-  fetchMLBGameDetails,
-  fetchNFLGameDetails,
-  fetchNHLGameDetails,
+  fetchGameDetails,
   fetchScoreboard,
 }
 
