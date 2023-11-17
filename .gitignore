@@ -132,3 +132,5 @@ dist
 node_modules
 build
 *.tsbuildinfo
+
+examples/**/*.js
