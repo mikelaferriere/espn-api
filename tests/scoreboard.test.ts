@@ -1,13 +1,12 @@
 import axios from 'axios'
 import {
-  fetchRawMLBScoreboard,
-  fetchRawNFLScoreboard,
-  fetchRawNHLScoreboard,
+  fetchScoreboard,
 } from '../lib/scoreboard'
 
 import * as mlbJson from './data/scoreboard/mlb.json'
 import * as nflJson from './data/scoreboard/nfl.json'
 import * as nhlJson from './data/scoreboard/nhl.json'
+import { League } from '../lib/types'
 
 jest.mock('axios')
 
@@ -19,7 +18,7 @@ describe('scoreboard module', () => {
   test('mlb parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: mlbJson })
 
-    const actual = await fetchRawMLBScoreboard()
+    const actual = await fetchScoreboard(League.MLB)
     expect(actual).toStrictEqual({
       abbreviation: 'MLB',
       events: [
@@ -56,7 +55,7 @@ describe('scoreboard module', () => {
   test('nhl parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: nhlJson })
 
-    const actual = await fetchRawNHLScoreboard()
+    const actual = await fetchScoreboard(League.NHL)
     expect(actual).toStrictEqual({
       abbreviation: 'NHL',
       events: [
@@ -162,7 +161,7 @@ describe('scoreboard module', () => {
   test('nfl parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: nflJson })
 
-    const actual = await fetchRawNFLScoreboard()
+    const actual = await fetchScoreboard(League.NFL)
     expect(actual).toStrictEqual({
       abbreviation: 'NFL',
       events: [

@@ -38,7 +38,7 @@ export const fetchGameDetails = (league: League, eventId: string): Promise<GameD
       return {
         homeTeam: getTeam(data.header.competitions[0].competitors, 'home'),
         awayTeam: getTeam(data.header.competitions[0].competitors, 'away'),
-        plays: data.plays.map(mapToPlay),
+        plays: data.plays?.map(mapToPlay),
       }
     })
 }

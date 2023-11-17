@@ -1,13 +1,12 @@
 import axios from 'axios'
 import {
-  fetchMLBGameDetails,
-  fetchNFLGameDetails,
-  fetchNHLGameDetails,
+  fetchGameDetails,
 } from '../lib/details'
 
 import * as mlbJson from './data/gameDetails/mlb.json'
 import * as nflJson from './data/gameDetails/nfl.json'
 import * as nhlJson from './data/gameDetails/nhl.json'
+import { League } from '../lib/types'
 
 const fs = require('fs').promises
 
@@ -21,7 +20,7 @@ describe('game details module', () => {
   test('mlb parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: mlbJson })
 
-    const actual = await fetchMLBGameDetails('401581097')
+    const actual = await fetchGameDetails(League.MLB, '401581097')
     expect(actual).toStrictEqual({
       homeTeam: {
         id: '29',
@@ -7772,7 +7771,7 @@ describe('game details module', () => {
   test('nfl parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: nflJson })
 
-    const actual = await fetchNFLGameDetails('401547538')
+    const actual = await fetchGameDetails(League.NFL, '401547538')
     expect(actual).toStrictEqual({
       homeTeam: {
         id: '33',
@@ -7799,7 +7798,7 @@ describe('game details module', () => {
   test('nhl parsing happy path', async () => {
     axios.get = jest.fn().mockResolvedValue({ data: nhlJson })
 
-    const actual = await fetchNHLGameDetails('401559471')
+    const actual = await fetchGameDetails(League.NHL, '401559471')
 
     expect(actual).toStrictEqual({
       homeTeam: {
