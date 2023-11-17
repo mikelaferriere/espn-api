@@ -4,18 +4,14 @@ import {
   fetchNHLGameDetails,
 } from './details'
 import {
-  fetchRawNHLScoreboard,
-  fetchRawMLBScoreboard,
-  fetchRawNFLScoreboard,
+  fetchScoreboard
 } from './scoreboard'
 
 export {
   fetchMLBGameDetails,
   fetchNFLGameDetails,
   fetchNHLGameDetails,
-  fetchRawMLBScoreboard,
-  fetchRawNFLScoreboard,
-  fetchRawNHLScoreboard,
+  fetchScoreboard,
 }
 
 export * from './types';

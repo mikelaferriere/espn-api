@@ -1,3 +1,10 @@
+export enum League {
+  NBA = 'basketball/nba',
+  MLB = 'baseball/mlb',
+  NFL = 'football/nfl',
+  NHL = 'hockey/nhl',
+}
+
 export interface BaseScoreboard {
   id: string
   name: string

@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import { getTeam } from './utils'
-import { BaseScoreboard, SportingEvent } from './types'
+import { BaseScoreboard, League, SportingEvent } from './types'
 
 const mapToScoreboard = (data: Record<string, any>): BaseScoreboard => {
   const { leagues, events } = data
@@ -29,38 +29,12 @@ const mapToScoreboard = (data: Record<string, any>): BaseScoreboard => {
 }
 
 /**
- * Fetch raw scoreboard data for the NHL
- *
+ * Fetch scoreboard data for a given League
+ * @param {League} league
  * @returns {Promise<BaseScoreboard>}
  */
-export const fetchRawNHLScoreboard = (): Promise<BaseScoreboard> => {
+export const fetchScoreboard = (league: League): Promise<BaseScoreboard> => {
   return axios
-    .get('https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard')
-    .then(({ data }) => mapToScoreboard(data))
-}
-
-/**
- * Fetch raw scoreboard data for the NFL
- *
- * @returns {Promise<BaseScoreboard>}
- */
-export const fetchRawNFLScoreboard = (): Promise<BaseScoreboard> => {
-  return axios
-    .get(
-      'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
-    )
-    .then(({ data }) => mapToScoreboard(data))
-}
-
-/**
- * Fetch raw scoreboard data for the MLB
- *
- * @returns {Promise<BaseScoreboard>}
- */
-export const fetchRawMLBScoreboard = (): Promise<BaseScoreboard> => {
-  return axios
-    .get(
-      'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard'
-    )
-    .then(({ data }) => mapToScoreboard(data))
+     .get(`https://site.api.espn.com/apis/site/v2/sports/${league}/scoreboard`)
+     .then(({ data }) => mapToScoreboard(data))
 }
