@@ -1,7 +1,5 @@
 import axios from 'axios'
-import {
-  fetchScoreboard,
-} from '../lib/scoreboard'
+import { fetchScoreboard } from '../lib/scoreboard'
 
 import * as mlbJson from './data/scoreboard/mlb.json'
 import * as nflJson from './data/scoreboard/nfl.json'

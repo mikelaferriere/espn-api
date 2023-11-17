@@ -1,7 +1,6 @@
-import { fetchScoreboard } from '../lib/scoreboard';
-import { League } from '../lib/types';
+import { fetchScoreboard } from '../lib/scoreboard'
+import { League } from '../lib/types'
 
-const league = League.NHL;
+const league = League.NHL
 
-fetchScoreboard(league)
-  .then(console.dir);
+fetchScoreboard(league).then(console.dir).catch(console.error)

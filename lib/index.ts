@@ -1,13 +1,6 @@
-import {
-  fetchGameDetails,
-} from './details'
-import {
-  fetchScoreboard
-} from './scoreboard'
+import { fetchGameDetails } from './details'
+import { fetchScoreboard } from './scoreboard'
 
-export {
-  fetchGameDetails,
-  fetchScoreboard,
-}
+export { fetchGameDetails, fetchScoreboard }
 
-export * from './types';
+export * from './types'

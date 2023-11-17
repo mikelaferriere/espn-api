@@ -27,7 +27,10 @@ const mapToPlay = (data: Record<string, any>): Play => {
  * @param {string} eventId - The event ID
  * @returns {Promise<GameDetails>}
  */
-export const fetchGameDetails = (league: League, eventId: string): Promise<GameDetails> => {
+export const fetchGameDetails = (
+  league: League,
+  eventId: string
+): Promise<GameDetails> => {
   const leagueUrlString = enumToUrlString(league)
 
   return axios

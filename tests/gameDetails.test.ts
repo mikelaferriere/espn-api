@@ -1,7 +1,5 @@
 import axios from 'axios'
-import {
-  fetchGameDetails,
-} from '../lib/details'
+import { fetchGameDetails } from '../lib/details'
 
 import * as mlbJson from './data/gameDetails/mlb.json'
 import * as nflJson from './data/gameDetails/nfl.json'
