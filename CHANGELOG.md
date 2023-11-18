@@ -1,5 +1,15 @@
 # @mikelaferriere/espn-api
 
+## 0.6.0
+
+### Minor Changes
+
+- 31031e7: use tsc for deployments
+
+### Patch Changes
+
+- 7d82f63: use tsc fully
+
 ## 0.5.0
 
 ### Minor Changes
