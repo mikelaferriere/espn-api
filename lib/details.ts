@@ -5,43 +5,27 @@
  */
 
 import axios from 'axios'
-import { enumToUrlString, getTeam } from './utils'
-import { Play, GameDetails, League } from './types'
-
-const mapToPlay = (data: Record<string, any>): Play => {
-  const { id, type, text, awayScore, homeScore, scoringPlay, team } = data
-  return {
-    id,
-    type,
-    text,
-    awayScore,
-    homeScore,
-    scoringPlay,
-    team: team?.id,
-  }
-}
+import { enumToUrlString } from './utils'
+import { BaseGameDetails, LeagueEnum } from './types'
 
 /**
  * Fetch and return the game details for a given event
- * @param {League} league - The league
+ * @param {LeagueEnum} league - The league
  * @param {string} eventId - The event ID
- * @returns {Promise<GameDetails>}
+ * @returns {Promise<BaseGameDetails>}
  */
 export const fetchGameDetails = (
-  league: League,
+  league: LeagueEnum,
   eventId: string
-): Promise<GameDetails> => {
+): Promise<BaseGameDetails> => {
   const leagueUrlString = enumToUrlString(league)
 
   return axios
-    .get(
+    .get<BaseGameDetails>(
       `https://site.api.espn.com/apis/site/v2/sports/${leagueUrlString}/summary?event=${eventId}`
     )
-    .then(({ data }) => {
-      return {
-        homeTeam: getTeam(data.header.competitions[0].competitors, 'home'),
-        awayTeam: getTeam(data.header.competitions[0].competitors, 'away'),
-        plays: data.plays?.map(mapToPlay),
-      }
+    .then(({ data }) => data)
+    .catch((error) => {
+      throw new Error(error)
     })
 }

@@ -1,47 +1,21 @@
-import { League, Team } from './types'
+import { LeagueEnum } from './types'
 
 /**
  * Convert the league enum to the url string
- * @param league - league enum
+ * @param {LeagueEnum} - league enum
  * @returns url string
  */
-export const enumToUrlString = (league: League): string => {
+export const enumToUrlString = (league: LeagueEnum): string => {
   switch (league) {
-    case League.MLB:
+    case LeagueEnum.MLB:
       return 'baseball/mlb'
-    case League.NBA:
+    case LeagueEnum.NBA:
       return 'basketball/nba'
-    case League.NFL:
+    case LeagueEnum.NFL:
       return 'football/nfl'
-    case League.NHL:
+    case LeagueEnum.NHL:
       return 'hockey/nhl'
     default:
       throw Error(`Leauge (${String(league)}) not supported`)
   }
-}
-
-/**
- * From a list of competitors and a home or away team, return the team
- *
- * @param competitors - list of competitors
- *  @param homeOrAway - home or away team
- *  @returns team
- */
-export const getTeam = (
-  competitors: Record<string, any>[],
-  homeOrAway: string
-): Team => {
-  return competitors
-    .filter(({ homeAway }) => homeOrAway === homeAway)
-    .map(({ id, team }) => {
-      return {
-        id,
-        name: team.name,
-        abbreviation: team.abbreviation,
-        displayName: team.displayName,
-        shortDisplayName: team.shortDisplayName,
-        location: team.location,
-        logo: team.logo,
-      }
-    })[0]
 }
