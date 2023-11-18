@@ -14,7 +14,7 @@ import * as Enums from './definitions/enums'
  * @param {LeagueEnum} league
  * @returns {Promise<BaseScoreboard>}
  */
-export const fetchScoreboard = (
+export const fetch = (
   league: Enums.League
 ): Promise<BaseScoreboard> => {
   const leagueUrlString = enumToUrlString(league)

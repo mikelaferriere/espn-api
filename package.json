@@ -13,8 +13,7 @@
   "types": "build/dts",
   "files": [
     "build",
-    "lib",
-    "definitions"
+    "lib"
   ],
   "scripts": {
     "build": "tsc",

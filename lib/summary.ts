@@ -15,7 +15,7 @@ import * as Enums from './definitions/enums'
  * @param {string} eventId - The event ID
  * @returns {Promise<BaseGameDetails>}
  */
-export const fetchGameDetails = (
+export const fetch = (
   league: Enums.League,
   eventId: string
 ): Promise<BaseGameDetails> => {
