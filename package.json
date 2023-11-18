@@ -9,6 +9,7 @@
     "type": "git",
     "url": "git+https://git@github.com/mikelaferriere/espn-api.git"
   },
+  "type": "module",
   "main": "build/index.js",
   "types": "build/dts",
   "files": [
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
     "@types/jest": "29.5.7",
     "@types/luxon": "3.3.4",
     "@types/node": "^20.9.1",
