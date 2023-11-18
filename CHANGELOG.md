@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.3.0
+
+### Minor Changes
+
+- 56b04cb: Simplify functions to re-use across all sports. Type almost all fields for easier comprehension
+
 ## 0.2.7
 
 ### Patch Changes
