@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.4.3
+
+### Patch Changes
+
+- 2d516f5: update more type information for summary
+- 2d516f5: update more type information for summary
+
 ## 0.4.2
 
 ### Patch Changes
