@@ -275,8 +275,72 @@ export interface Team {
   logo: string
 }
 
+export interface Drive {
+  id: string
+  description: string
+  team: {
+    name: string
+    abbreviation: string
+    displayName: string
+    shortDisplayName: string
+    logos: Logo[]
+  }
+  start: {
+    period: {
+      type: string
+      number: number
+    }
+    clock: {
+      displayValue: string
+    }
+    yardLine: number
+    text: string
+  }
+  end: {
+    period: {
+      type: string
+      number: number
+    }
+    clock: {
+      displayValue: string
+    }
+    yardLine: number
+    text: string
+  }
+  timeElapsed: {
+    displayValue: string
+  }
+  yards: number
+  isScore: boolean
+  offensivePlays: number
+  result: string
+  shortDisplayResult: string
+  displayResult: string
+  plays: Play[]
+}
+
 export interface BaseGameDetails {
   boxscore: BoxScore
+  format: {
+    regulation: {
+      periods: number
+      displayName: string
+      slug: string
+      clock: number
+    }
+  }
+  gameInfo: {
+    venue: Venue
+    attendance: number
+    officials: any[]
+  }
+  drives?: {
+    previous: Drive[]
+    current?: Drive
+  }[]
+  leaders: Leader[]
+  plays: Play[]
+  standings: any[]
 }
 
 export interface BoxScore {
@@ -296,22 +360,6 @@ export interface BoxScore {
       }
     }
   }[]
-  format: {
-    regulation: {
-      periods: number
-      displayName: string
-      slug: string
-      clock: number
-    }
-  }
-  gameInfo: {
-    venue: Venue
-    attendance: number
-    officials: any[]
-  }
-  leaders: Leader[]
-  plays: Play[]
-  standings: any[]
 }
 
 export interface Play {
@@ -333,11 +381,20 @@ export interface Play {
     displayValue: string
   }
   scoringPlay: boolean
-  scoreValue: number
+  scoreValue?: number
   modified: string
   wallclock: string
   shootingPlay?: boolean
-  team: {
+  start?: {
+    down: number
+    distance: number
+    yardLine: number
+    yardsToEndzone: number
+    team: {
+      id: string
+    }
+  }
+  team?: {
     id: string
   }
 }
