@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.4.5
+
+### Patch Changes
+
+- cda0a6e: update patch
+
 ## 0.4.4
 
 ### Patch Changes
