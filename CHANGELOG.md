@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.5.0
+
+### Minor Changes
+
+- e77a574: use tsc instead of rollup
+
 ## 0.4.5
 
 ### Patch Changes
