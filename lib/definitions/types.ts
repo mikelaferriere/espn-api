@@ -1,5 +1,3 @@
-
-
 export interface BaseScoreboard {
   leagues: League[]
   season: {

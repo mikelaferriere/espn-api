@@ -101,7 +101,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "exclude": ["node_modules", "build"],
-  "include": ["lib", "definitions"],
+  "include": ["lib", "lib/definitions"],
   "ts-node": {
     "esm": true // «———— enabling ESM for ts-node
   }

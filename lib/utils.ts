@@ -1,4 +1,4 @@
-import { Enums } from '../definitions'
+import * as Enums from './definitions/enums'
 
 /**
  * Convert the league enum to the url string

@@ -6,7 +6,8 @@
 
 import axios from 'axios'
 import { enumToUrlString } from './utils'
-import { BaseScoreboard, Enums } from '../definitions'
+import { BaseScoreboard } from './definitions/types'
+import * as Enums from './definitions/enums'
 
 /**
  * Fetch scoreboard data for a given League

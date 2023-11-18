@@ -1,6 +1,7 @@
 import { fetchGameDetails } from './details'
 import { fetchScoreboard } from './scoreboard'
 
-export { fetchGameDetails, fetchScoreboard }
+import * as Enums from './definitions/enums'
+import * as Types from './definitions/types'
 
-export * from '../definitions'
+export { Enums, Types, fetchGameDetails, fetchScoreboard }

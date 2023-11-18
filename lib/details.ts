@@ -6,7 +6,8 @@
 
 import axios from 'axios'
 import { enumToUrlString } from './utils'
-import { BaseGameDetails, Enums} from '../definitions'
+import { BaseGameDetails} from './definitions/types'
+import * as Enums from './definitions/enums'
 
 /**
  * Fetch and return the game details for a given event
