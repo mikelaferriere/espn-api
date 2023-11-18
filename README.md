@@ -1,4 +1,6 @@
-# espn-api
+# ESPN-API
 
-Typescript package to access ESPN Public API for Sporting Event details
-https://mikelaferriere.github.io/espn-api
+Simple Typescript wrapper for the public ESPN-api
+
+### Documentation
+[docs](https://mikelaferriere.github.io/espn-api)

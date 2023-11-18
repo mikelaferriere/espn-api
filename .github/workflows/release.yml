@@ -2,6 +2,8 @@ name: Release
 
 on:
   push:
+    paths:
+      - 'CHANGELOG.md'
     branches:
       - main
 
