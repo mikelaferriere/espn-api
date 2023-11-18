@@ -1,5 +1,17 @@
 # @mikelaferriere/espn-api
 
+## 0.4.0
+
+### Minor Changes
+
+- 4267ba0: Clean up type definitions
+- 031301d: update
+- bafd3f1: Moving types around for more clarity
+
+### Patch Changes
+
+- 1e0c951: update again
+
 ## 0.3.0
 
 ### Minor Changes
