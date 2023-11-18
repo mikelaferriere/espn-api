@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import { enumToUrlString } from './utils'
-import { BaseGameDetails} from './definitions/types'
+import { BaseGameDetails } from './definitions/types'
 import * as Enums from './definitions/enums'
 
 /**
