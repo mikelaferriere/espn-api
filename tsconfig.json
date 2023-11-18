@@ -103,6 +103,6 @@
   "exclude": ["node_modules", "build"],
   "include": ["lib", "lib/types.ts"],
   "ts-node": {
-    "esm": true, // «———— enabling ESM for ts-node   
-  },
+    "esm": true // «———— enabling ESM for ts-node
+  }
 }

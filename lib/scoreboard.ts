@@ -13,7 +13,9 @@ import { BaseScoreboard, LeagueEnum } from './types'
  * @param {LeagueEnum} league
  * @returns {Promise<BaseScoreboard>}
  */
-export const fetchScoreboard = (league: LeagueEnum): Promise<BaseScoreboard> => {
+export const fetchScoreboard = (
+  league: LeagueEnum
+): Promise<BaseScoreboard> => {
   const leagueUrlString = enumToUrlString(league)
 
   return axios

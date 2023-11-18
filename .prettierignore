@@ -2,3 +2,6 @@
 build
 coverage
 dist
+docs
+examples
+tests

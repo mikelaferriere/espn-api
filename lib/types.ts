@@ -53,7 +53,7 @@ export interface SeasonDetailed {
     type: number
     name: string
     abbreviation: string
-  }  
+  }
 }
 
 export interface Logo {
