@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://git@github.com/mikelaferriere/espn-api.git"
   },
-  "main": "build/lib/index.js",
+  "main": "build/index.js",
   "types": "build/dts",
   "files": [
     "build",
@@ -23,7 +23,7 @@
     "format:check": "prettier . --check",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
-    "predeploy": "rm -rf build && npm run build && mv build/dts/lib/* build/dts/",
+    "predeploy": "rm -rf build && npm run build",
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "publish": "changeset publish",
     "docs": "rm -rf docs && typedoc lib/index.ts --out docs",
