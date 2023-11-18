@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.4.4
+
+### Patch Changes
+
+- 8f02953: fix drive type
+
 ## 0.4.3
 
 ### Patch Changes
