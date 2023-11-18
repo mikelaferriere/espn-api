@@ -337,7 +337,7 @@ export interface BaseGameDetails {
   drives?: {
     previous: Drive[]
     current?: Drive
-  }[]
+  }
   leaders: Leader[]
   plays: Play[]
   standings: any[]
