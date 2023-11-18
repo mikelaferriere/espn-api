@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.4.1
+
+### Patch Changes
+
+- d1337db: move definitions directory around
+- d1337db: move definitions directory around
+
 ## 0.4.0
 
 ### Minor Changes
