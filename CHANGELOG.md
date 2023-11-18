@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.4.2
+
+### Patch Changes
+
+- 781e8fc: More type definitions fix
+- 781e8fc: More type definitions fix
+
 ## 0.4.1
 
 ### Patch Changes
