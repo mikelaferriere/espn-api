@@ -1,9 +1,4 @@
-export enum LeagueEnum {
-  NBA = 0,
-  MLB = 1,
-  NFL = 2,
-  NHL = 3,
-}
+
 
 export interface BaseScoreboard {
   leagues: League[]

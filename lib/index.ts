@@ -3,4 +3,4 @@ import { fetchScoreboard } from './scoreboard'
 
 export { fetchGameDetails, fetchScoreboard }
 
-export * from './types'
+export * from '../definitions'

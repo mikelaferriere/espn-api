@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import { enumToUrlString } from './utils'
-import { BaseScoreboard, LeagueEnum } from './types'
+import { BaseScoreboard, Enums } from '../definitions'
 
 /**
  * Fetch scoreboard data for a given League
@@ -14,7 +14,7 @@ import { BaseScoreboard, LeagueEnum } from './types'
  * @returns {Promise<BaseScoreboard>}
  */
 export const fetchScoreboard = (
-  league: LeagueEnum
+  league: Enums.League
 ): Promise<BaseScoreboard> => {
   const leagueUrlString = enumToUrlString(league)
 

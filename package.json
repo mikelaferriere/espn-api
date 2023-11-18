@@ -13,7 +13,8 @@
   "types": "build/dts",
   "files": [
     "build",
-    "lib"
+    "lib",
+    "definitions"
   ],
   "scripts": {
     "build": "tsc",
@@ -23,7 +24,7 @@
     "format:check": "prettier . --check",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
-    "postdeploy": "rm -rf build/lib && rm -rf build/examples && rm -rf build/dts/lib && rm -rf build/dts/examples",
+    "postdeploy": "rm -rf build/lib && rm -rf build/examples && rm -rf build/definitions && rm -rf build/dts/lib && rm -rf build/dts/examples",
     "predeploy": "rm -rf build && npm run build && mv build/dts/lib/* build/dts/",
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "publish": "changeset publish",

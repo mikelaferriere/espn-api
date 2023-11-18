@@ -1,19 +1,19 @@
-import { LeagueEnum } from './types'
+import { Enums } from '../definitions'
 
 /**
  * Convert the league enum to the url string
- * @param {LeagueEnum} - league enum
+ * @param {Enums.League} - league enum
  * @returns url string
  */
-export const enumToUrlString = (league: LeagueEnum): string => {
+export const enumToUrlString = (league: Enums.League): string => {
   switch (league) {
-    case LeagueEnum.MLB:
+    case Enums.League.MLB:
       return 'baseball/mlb'
-    case LeagueEnum.NBA:
+    case Enums.League.NBA:
       return 'basketball/nba'
-    case LeagueEnum.NFL:
+    case Enums.League.NFL:
       return 'football/nfl'
-    case LeagueEnum.NHL:
+    case Enums.League.NHL:
       return 'hockey/nhl'
     default:
       throw Error(`Leauge (${String(league)}) not supported`)
