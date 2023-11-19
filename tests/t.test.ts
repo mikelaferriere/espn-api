@@ -1,10 +1,10 @@
-import { fetchGameDetails } from '../lib/details'
-import { fetchScoreboard } from '../lib/scoreboard'
+import * as Summary from '../lib/summary'
+import * as Scoreboard from '../lib/scoreboard'
 
-import { LeagueEnum } from '../lib/types'
+import { League } from '../lib/definitions/enums'
 
 describe('play module', () => {
   test('happy path', async () => {
-    const details = await fetchGameDetails(LeagueEnum.NHL, '401555905')
+    const details = await Summary.fetch(League.NHL, '401555905')
   })
 })
