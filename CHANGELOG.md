@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.6.2
+
+### Patch Changes
+
+- b6f6a20: add possession text
+- b6f6a20: add possession text
+
 ## 0.6.1
 
 ### Patch Changes
