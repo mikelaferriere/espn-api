@@ -402,6 +402,7 @@ export interface Play {
     yardsToEndzone?: number
     downDistanceText?: string
     shortDownDistanceText?: string
+    possessionText?: string
     team: {
       id: string
     }
@@ -413,6 +414,7 @@ export interface Play {
     yardsToEndzone?: number
     downDistanceText?: string
     shortDownDistanceText?: string
+    possessionText?: string
     team: {
       id: string
     }
