@@ -319,8 +319,17 @@ export interface Drive {
   plays: Play[]
 }
 
+/**
+ * Base detail type for the /summary endpoint
+ */
 export interface BaseGameDetails {
+  /**
+   * The game's boxscore
+   */
   boxscore: BoxScore
+  /**
+   * The game's format
+   */
   format: {
     regulation: {
       periods: number
