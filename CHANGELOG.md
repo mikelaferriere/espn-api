@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.1
+
+### Patch Changes
+
+- b2727b5: update NFL plays type
+
 ## 0.6.0
 
 ### Minor Changes
