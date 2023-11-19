@@ -296,7 +296,7 @@ export interface Drive {
     yardLine: number
     text: string
   }
-  end: {
+  end?: {
     period: {
       type: string
       number: number
@@ -390,15 +390,29 @@ export interface Play {
     displayValue: string
   }
   scoringPlay: boolean
+  priority?: boolean
   scoreValue?: number
   modified: string
   wallclock: string
   shootingPlay?: boolean
   start?: {
-    down: number
-    distance: number
-    yardLine: number
-    yardsToEndzone: number
+    down?: number
+    distance?: number
+    yardLine?: number
+    yardsToEndzone?: number
+    downDistanceText?: string
+    shortDownDistanceText?: string
+    team: {
+      id: string
+    }
+  }
+  end?: {
+    down?: number
+    distance?: number
+    yardLine?: number
+    yardsToEndzone?: number
+    downDistanceText?: string
+    shortDownDistanceText?: string
     team: {
       id: string
     }
