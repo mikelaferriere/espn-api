@@ -385,9 +385,9 @@ export interface Play {
   period: {
     type?: string
     number: number
-    displayName: string
+    displayValue: string
   }
-  clock: {
+  clock?: {
     displayValue: string
   }
   participants?: {
@@ -482,5 +482,20 @@ export interface Play {
   }
   trajectory?: string
   outs?: number
+  onFirst?: {
+    athlete: {
+      id: string
+    }
+  }
+  onSecond?: {
+    athlete: {
+      id: string
+    }
+  }
+  onThird?: {
+    athlete: {
+      id: string
+    }
+  }
   // End Baseball Related
 }
