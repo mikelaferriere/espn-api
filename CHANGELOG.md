@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.5
+
+### Patch Changes
+
+- b92e7ff: Add more type info
+
 ## 0.6.4
 
 ### Patch Changes
