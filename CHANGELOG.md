@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.3
+
+### Patch Changes
+
+- cfd1536: add more fields to Play type
+
 ## 0.6.2
 
 ### Patch Changes
