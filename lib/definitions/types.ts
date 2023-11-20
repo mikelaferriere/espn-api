@@ -400,7 +400,12 @@ export interface Play {
   modified: string
   wallclock: string
   team?: {
-    id: string
+    id?: string
+    name?: string
+    abbreviation?: string
+    displayName?: string
+    shortDisplayName?: string
+    logos?: Logo[]
   }
 
   // Start Hockey Related
