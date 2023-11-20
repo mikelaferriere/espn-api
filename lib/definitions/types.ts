@@ -383,6 +383,7 @@ export interface Play {
   awayScore: number
   homeScore: number
   period: {
+    type?: string
     number: number
     displayName: string
   }
@@ -456,6 +457,10 @@ export interface Play {
     displayValue: string
   }
   atBatPitchNumber?: number
+  hitCoordinate?: {
+    x: number
+    y: number
+  }
   pitchCoordinate?: {
     x: number
     y: number
@@ -465,6 +470,7 @@ export interface Play {
     text: string
     abbreviation: string
   }
+  pitchVelocity?: number
   summaryType?: string
   pitchCount?: {
     balls: number
