@@ -389,12 +389,38 @@ export interface Play {
   clock: {
     displayValue: string
   }
+  participants?: {
+    athlete: Athlete,
+    type: string
+  }[]
   scoringPlay: boolean
   priority?: boolean
   scoreValue?: number
   modified: string
   wallclock: string
+  team?: {
+    id: string
+  }
+
+  // Start Hockey Related
   shootingPlay?: boolean
+  coordinate?: {
+    x: number
+    y: number
+  }
+  strength?: {
+    id: string
+    text: string
+    abbreviation: string
+  }
+  shotInfo?: {
+    id: string
+    text: string
+    abbreviation: string
+  }
+  // End Hockey Related
+
+  // Start Football related
   start?: {
     down?: number
     distance?: number
@@ -419,7 +445,36 @@ export interface Play {
       id: string
     }
   }
-  team?: {
-    id: string
+  // End Football Related
+
+  // Start Baseball Related
+  atBatId?: string
+  batOrder?: number
+  bats?: {
+    type: string
+    abbreviation: string
+    displayValue: string
   }
+  atBatPitchNumber?: number
+  pitchCoordinate?: {
+    x: number
+    y: number
+  }
+  pitchType?: {
+    id: string
+    text: string
+    abbreviation: string
+  }
+  summaryType?: string
+  pitchCount?: {
+    balls: number
+    strikes: number
+  }
+  resultCount?: {
+    balls: number
+    strikes: number
+  }
+  trajectory?: string
+  outs?: number
+  // End Baseball Related
 }
