@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.6
+
+### Patch Changes
+
+- 886d385: add more details to team definition in Play type
+
 ## 0.6.5
 
 ### Patch Changes
