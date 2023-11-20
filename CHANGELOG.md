@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.4
+
+### Patch Changes
+
+- c6bb81f: more details to Play type
+
 ## 0.6.3
 
 ### Patch Changes
