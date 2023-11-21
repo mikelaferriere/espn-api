@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.6.7
+
+### Patch Changes
+
+- 86d81ae: update readme for display in npm package
+
 ## 0.6.6
 
 ### Patch Changes
