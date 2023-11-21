@@ -28,7 +28,7 @@ To set up and run this project locally, follow these steps:
 ### Clone the repository using HTTPS:
 
 ```bash
-  git clone https://github.com/@mikelaferriere/espn-api.git
+  git clone https://github.com/mikelaferriere/espn-api.git
 ```
 
 ### Install dependencies:
