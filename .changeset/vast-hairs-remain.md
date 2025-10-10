@@ -2,4 +2,4 @@
 '@mikelaferriere/espn-api': patch
 ---
 
-fix publish github actions
+redploy
