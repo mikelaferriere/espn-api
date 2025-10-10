@@ -33,7 +33,7 @@
     "luxon": "3.7.2"
   },
   "devDependencies": {
-    "@changesets/cli": "2.26.2",
+    "@changesets/cli": "2.29.7",
     "@types/jest": "29.1.1",
     "@types/luxon": "3.7.1",
     "@types/node": "20.19.20",
