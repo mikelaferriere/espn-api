@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.1
+
+### Patch Changes
+
+- 37916d6: update docs
+
 ## 0.9.0
 
 ### Minor Changes
