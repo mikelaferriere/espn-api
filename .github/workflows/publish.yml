@@ -1,18 +1,16 @@
 name: Publish to npm
 
 on:
-  push:
+  pull_request_target:
+    types: [closed]
     branches:
       - main
-    paths:
-      - 'package.json' # Trigger when package.json is updated by the versioning PR
 
 jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    # Only run if the PR was merged (not just closed) and the head branch is main
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && contains(github.event.pull_request.labels.*.name, 'version')
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
