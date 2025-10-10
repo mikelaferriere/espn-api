@@ -2,3 +2,8 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run precommit
+echo "Running changeset. Please provide details for the change."
+exec < /dev/tty && npx changeset
+if [ -d ".changeset" ]; then
+  git add .changeset/*.md
+fi

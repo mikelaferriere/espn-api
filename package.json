@@ -24,7 +24,7 @@
     "format:fix": "prettier --write .",
     "lint": "eslint .",
     "predeploy": "rm -rf build",
-    "precommit": "npm run format:check && npm run lint && npm run build && npm run test && chmod +x ./scripts/pre-commit.sh && ./scripts/pre-commit.sh",
+    "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "publish": "changeset publish",
     "test": "jest . --coverage"
   },
