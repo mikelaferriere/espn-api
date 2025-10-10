@@ -30,7 +30,23 @@ jobs:
       - name: Build Production package
         run: npm run deploy
 
+      - name: Get package info
+        id: package_info
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
+
+      - name: Get latest npm version
+        id: npm_version
+        run: |
+          NPM_LATEST_VERSION=$(npm view ${{ env.PACKAGE_NAME }} version || echo "0.0.0")
+          echo "NPM_LATEST_VERSION=$NPM_LATEST_VERSION" >> $GITHUB_ENV
+        continue-on-error: true
+
       - name: Publish to npm
+        if: env.PACKAGE_VERSION > env.NPM_LATEST_VERSION
         uses: changesets/action@v1
         with:
           publish: npm run publish
