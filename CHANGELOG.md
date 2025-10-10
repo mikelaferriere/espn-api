@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.6
+
+### Patch Changes
+
+- cc6d522: fix publish
+
 ## 0.9.5
 
 ### Patch Changes
