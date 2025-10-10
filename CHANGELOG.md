@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.9.4
+
+### Patch Changes
+
+- b50879a: fix publish github actions
+- cb934b1: redploy
+
 ## 0.9.3
 
 ### Patch Changes
