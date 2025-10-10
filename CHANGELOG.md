@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.3
+
+### Patch Changes
+
+- 301546b: making changesets automatically
+
 ## 0.9.2
 
 ### Patch Changes
