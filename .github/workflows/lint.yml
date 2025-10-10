@@ -7,14 +7,14 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v5
         with:
-          node-version: 18
+          node-version: 21
       - run: npm install
-      - uses: sibiraj-s/action-eslint@v3
+      - uses: sibiraj-s/action-eslint@v4
         with:
           annotations: true
