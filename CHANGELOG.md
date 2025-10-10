@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.2
+
+### Patch Changes
+
+- 9abf3eb: update github action versions
+
 ## 0.9.1
 
 ### Patch Changes
