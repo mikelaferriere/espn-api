@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.7
+
+### Patch Changes
+
+- e247770: update
+
 ## 0.9.6
 
 ### Patch Changes
