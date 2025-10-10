@@ -2,6 +2,8 @@ name: Create Versioning PR
 
 on:
   push:
+    paths:
+      - '.changeset/**'
     branches:
       - main
 
@@ -26,21 +28,6 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
-      - name: Check for changes and create changeset
-        id: check_for_changes
-        run: |
-          if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
-            echo "Changes detected, creating a patch changeset."
-            npx changeset add --empty --patch -m "Automated patch release"
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add .changeset
-            git commit -m "Add automated patch changeset"
-            git push
-          else
-            echo "No changes detected, skipping changeset creation."
-          fi
 
       - name: Create Release Pull Request
         id: changesets
