@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.9.8
+
+### Patch Changes
+
+- 243cab0: update deps
+- d5286cd: update deps
+
 ## 0.9.7
 
 ### Patch Changes
