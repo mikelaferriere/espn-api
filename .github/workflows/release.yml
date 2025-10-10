@@ -1,9 +1,7 @@
-name: Release
+name: Create Versioning PR
 
 on:
   push:
-    paths:
-      - '.changeset/**'
     branches:
       - main
 
@@ -14,8 +12,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
-    name: Release
+  version:
+    name: Create Versioning PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -26,23 +24,13 @@ jobs:
         with:
           node-version: 21
 
-      - name: Install Production Dependencies
-        run: |
-          npm install
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Build Production package
-        run: |
-          npm run deploy
-
-      - name: Install Production Dependencies
-        run: |
-          npm install @changesets/cli
-
-      - name: Create Release Pull Request or Publish to github packages
+      - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run publish
+          title: "Version Packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
