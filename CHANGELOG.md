@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 0.9.0
+
+### Minor Changes
+
+- b5ebfc3: update changeset version
+
 ## 0.8.0
 
 ### Minor Changes
