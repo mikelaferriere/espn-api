@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.9.9
+
+### Patch Changes
+
+- 856e3b5: update node
+- 78ab132: update actions
+
 ## 0.9.8
 
 ### Patch Changes
