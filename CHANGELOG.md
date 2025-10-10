@@ -1,5 +1,17 @@
 # @mikelaferriere/espn-api
 
+## 0.8.0
+
+### Minor Changes
+
+- c931bbd: Updating dependencies to resolve vulnerabilities
+- d09a67f: update dependencies for vulnerabilities
+
+### Patch Changes
+
+- 71ae3f6: update deps
+- 71ae3f6: update deps
+
 ## 0.6.7
 
 ### Patch Changes
