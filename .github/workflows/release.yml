@@ -33,6 +33,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          title: "Version Packages"
+          title: 'Version Packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
