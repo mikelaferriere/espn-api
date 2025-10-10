@@ -19,7 +19,7 @@
     "build": "tsc",
     "changeset": "changeset",
     "deploy": "tsc",
-    "docs": "rm -rf docs && typedoc lib/index.ts --out docs",
+    "docs": "rm -rf docs && typedoc lib/index.ts --out docs --basePath /espn-api/",
     "format:check": "prettier . --check",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
