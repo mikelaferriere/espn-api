@@ -391,7 +391,7 @@ export interface Play {
     displayValue: string
   }
   participants?: {
-    athlete: Athlete,
+    athlete: Athlete
     type: string
   }[]
   scoringPlay: boolean

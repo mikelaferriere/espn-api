@@ -32,35 +32,42 @@ To set up and run this project locally, follow these steps:
 ```
 
 ### Install dependencies:
+
 ```bash
   npm install
 ```
 
 ### Build the project:
+
 ```bash
   npm run build
 ```
 
 ### Run the tests:
+
 ```bash
   npm run test
 ```
 
 ## Usage
+
 Once you have successfully installed and set up the project, you can use it by importing the required functions and types. For example:
 
 ```javascript
-  import { Scoreboard, Summary, Enums, Types } from '@mikelaferriere/espn-api';
+import { Scoreboard, Summary, Enums, Types } from '@mikelaferriere/espn-api'
 
-  const league = Enums.League.NFL;
-  const scoreboards = await Scoreboard.fetch(league);
+const league = Enums.League.NFL
+const scoreboards = await Scoreboard.fetch(league)
 ```
 
 ## Contributing
+
 Contributions are always welcome! If you've found a bug, have feature requests, or want to improve something, please submit a pull request or open an issue with a detailed description.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Contact Me
+
 If you have any questions or suggestions regarding this project, feel free to contact me on LinkedIn [here](https://www.linkedin.com/in/michael-laferriere).
