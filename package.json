@@ -26,7 +26,8 @@
     "predeploy": "rm -rf build",
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "publish": "changeset publish",
-    "test": "jest . --coverage"
+    "test": "jest . --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "axios": "1.12.2",
