@@ -1,5 +1,12 @@
 # @mikelaferriere/espn-api
 
+## 0.9.10
+
+### Patch Changes
+
+- f43361d: skip husky in CI
+- c885827: add examples to docs and add husky prepare script
+
 ## 0.9.9
 
 ### Patch Changes
