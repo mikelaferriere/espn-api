@@ -14,6 +14,13 @@ import * as Enums from './definitions/enums'
  * @param {LeagueEnum} league - The league
  * @param {string} eventId - The event ID
  * @returns {Promise<BaseGameDetails>}
+ * @example
+ * ```typescript
+ * import { Summary, Enums } from '@mikelaferriere/espn-api';
+ *
+ * const gameDetails = await Summary.fetch(Enums.League.NHL, '401559470');
+ * console.log(gameDetails);
+ * ```
  */
 export const fetch = (
   league: Enums.League,

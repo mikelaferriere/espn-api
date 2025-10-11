@@ -13,6 +13,13 @@ import * as Enums from './definitions/enums'
  * Fetch scoreboard data for a given League
  * @param {LeagueEnum} league
  * @returns {Promise<BaseScoreboard>}
+ * @example
+ * ```typescript
+ * import { Scoreboard, Enums } from '@mikelaferriere/espn-api';
+ *
+ * const scoreboard = await Scoreboard.fetch(Enums.League.NHL);
+ * console.log(scoreboard);
+ * ```
  */
 export const fetch = (league: Enums.League): Promise<BaseScoreboard> => {
   const leagueUrlString = enumToUrlString(league)
