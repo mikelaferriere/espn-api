@@ -1,5 +1,5 @@
 export interface BaseScoreboard {
-  leagues: League[]
+  leagues: LeagueDetails[]
   season: {
     year: number
     type: number
@@ -9,7 +9,7 @@ export interface BaseScoreboard {
   }
   events: Event[]
   default?: {
-    leagues: League[]
+    leagues: LeagueDetails[]
     season: {
       year: number
       type: number
@@ -21,7 +21,7 @@ export interface BaseScoreboard {
   }
 }
 
-export interface League {
+export interface LeagueDetails {
   id: string
   uid: string
   name: string
