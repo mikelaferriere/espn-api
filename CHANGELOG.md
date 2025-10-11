@@ -1,5 +1,19 @@
 # @mikelaferriere/espn-api
 
+## 1.0.0
+
+### Major Changes
+
+- afea2f5: Generate all types for ESPN responses
+  Add fetcher function for Scoreboards for available Leagues
+  Add fetcher function for Summary for any given game
+  Export types and enums directly
+  Ensure documentation is up to date and available via github pages
+
+### Patch Changes
+
+- bea180d: update docs to use material theme
+
 ## 0.9.10
 
 ### Patch Changes
