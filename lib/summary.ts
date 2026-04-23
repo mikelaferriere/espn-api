@@ -33,7 +33,15 @@ export const fetch = (
       `https://site.api.espn.com/apis/site/v2/sports/${leagueUrlString}/summary?event=${eventId}`
     )
     .then(({ data }) => data)
-    .catch((error) => {
-      throw new Error(error)
+    .catch((error: unknown) => {
+      const message =
+        error instanceof Error
+          ? error.message
+          : typeof error === 'object' && error !== null && 'message' in error
+            ? String((error as { message: unknown }).message)
+            : typeof error === 'string'
+              ? error
+              : 'An unknown error occurred while fetching game details'
+      throw new Error(message)
     })
 }
