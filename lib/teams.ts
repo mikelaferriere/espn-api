@@ -10,12 +10,12 @@ import { enumToUrlString } from './utils'
 import { TeamsResponse, TeamDetail } from './definitions/types'
 import * as Enums from './definitions/enums'
 
-const BASE_URL =
-  'https://site.api.espn.com/apis/site/v2/sports'
+const BASE_URL = 'https://site.api.espn.com/apis/site/v2/sports'
 
-const buildPaginationQueryString = (
-  options?: { limit?: number; page?: number }
-): string => {
+const buildPaginationQueryString = (options?: {
+  limit?: number
+  page?: number
+}): string => {
   if (!options) return ''
 
   const params: string[] = []
@@ -50,9 +50,7 @@ export const fetchTeams = (
   const queryString = buildPaginationQueryString(options)
 
   return axios
-    .get<TeamsResponse>(
-      `${BASE_URL}/${leagueUrlString}/teams${queryString}`
-    )
+    .get<TeamsResponse>(`${BASE_URL}/${leagueUrlString}/teams${queryString}`)
     .then(({ data }) => data)
     .catch((error: unknown) => {
       const message =
@@ -85,9 +83,7 @@ export const fetchTeam = (
   const leagueUrlString = enumToUrlString(league)
 
   return axios
-    .get<TeamsResponse>(
-      `${BASE_URL}/${leagueUrlString}/teams/${teamId}`
-    )
+    .get<TeamsResponse>(`${BASE_URL}/${leagueUrlString}/teams/${teamId}`)
     .then(({ data }) => {
       const team = data.sports[0].leagues[0].teams[0].team
       return team

@@ -12,9 +12,7 @@ import { fetch as fetchScoreboard } from './scoreboard'
  * @returns {Enums.SeasonPhase} The corresponding SeasonPhase enum value
  * @throws {Error} If the season type is not a recognized value (1-4)
  */
-export const getSeasonPhase = (
-  season: { type: number }
-): Enums.SeasonPhase => {
+export const getSeasonPhase = (season: { type: number }): Enums.SeasonPhase => {
   switch (season.type) {
     case 1:
       return Enums.SeasonPhase.Preseason
