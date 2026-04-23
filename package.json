@@ -25,7 +25,7 @@
     "lint": "eslint .",
     "predeploy": "rm -rf build",
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
-    "publish": "changeset publish",
+    "release": "changeset publish",
     "test": "jest . --coverage",
     "prepare": "husky"
   },
