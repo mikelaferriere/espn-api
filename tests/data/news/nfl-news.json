@@ -1,0 +1,76 @@
+{
+  "articles": [
+    {
+      "id": "12345",
+      "description": "Breaking NFL news story about the upcoming draft picks and team strategies.",
+      "type": "HeadlineNews",
+      "story": "Full story text about the NFL draft preparations and team strategies for the upcoming season.",
+      "headline": "Major NFL Draft Development Shakes Up First Round",
+      "shortHeadline": "NFL Draft News",
+      "byline": "John Smith",
+      "published": "2024-01-15T10:30:00Z",
+      "lastModified": "2024-01-15T11:00:00Z",
+      "links": [
+        {
+          "rel": ["web"],
+          "href": "https://espn.com/nfl/story/_/id/12345",
+          "text": "Story"
+        }
+      ],
+      "images": [
+        {
+          "name": "NFL Draft Photo",
+          "type": "inline",
+          "url": "https://a.espncdn.com/photo/2024/0115/nfl_draft_800x450.jpg",
+          "width": 800,
+          "height": 450
+        }
+      ],
+      "categories": [
+        {
+          "id": "123",
+          "type": "team",
+          "team": {
+            "id": "12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "67890",
+      "description": "Quarterback injury update ahead of the weekend games.",
+      "type": "HeadlineNews",
+      "story": "Detailed analysis of the quarterback injury situation and its impact on fantasy football lineups.",
+      "headline": "Star QB Questionable for Sunday Showdown",
+      "shortHeadline": "QB Injury Update",
+      "byline": "Jane Doe",
+      "published": "2024-01-15T14:00:00Z",
+      "lastModified": "2024-01-15T14:30:00Z",
+      "links": [
+        {
+          "rel": ["web"],
+          "href": "https://espn.com/nfl/story/_/id/67890",
+          "text": "Story"
+        }
+      ],
+      "images": [
+        {
+          "name": "Injury Report Photo",
+          "type": "inline",
+          "url": "https://a.espncdn.com/photo/2024/0115/qb_injury_800x450.jpg",
+          "width": 800,
+          "height": 450
+        }
+      ],
+      "categories": [
+        {
+          "id": "456",
+          "type": "team",
+          "team": {
+            "id": "34"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "leagues": [
+    {
+      "id": "46",
+      "uid": "s:40~l:46",
+      "name": "National Basketball Association",
+      "abbreviation": "NBA",
+      "slug": "nba",
+      "season": {
+        "year": 2024,
+        "startDate": "2023-10-01T07:00Z",
+        "endDate": "2024-06-30T06:59Z",
+        "displayName": "2023-24",
+        "type": {
+          "id": "2",
+          "type": 2,
+          "name": "Regular Season",
+          "abbreviation": "reg"
+        }
+      },
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/leagues/500/nba.png",
+          "width": 500,
+          "height": 500,
+          "alt": "",
+          "rel": ["full", "default"],
+          "lastUpdated": "2021-03-01T12:00Z"
+        }
+      ],
+      "calendarType": "list",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2023-10-01T07:00Z",
+      "calendarEndDate": "2024-06-30T06:59Z",
+      "calendar": []
+    }
+  ],
+  "season": {
+    "year": 2024,
+    "type": 2
+  },
+  "day": {
+    "date": "2024-01-15T08:00Z"
+  },
+  "events": [
+    {
+      "id": "401472765",
+      "uid": "s:40~l:46~e:401472765",
+      "date": "2024-01-15T23:30Z",
+      "name": "Los Angeles Lakers at Oklahoma City Thunder",
+      "shortName": "LAL @ OKC",
+      "season": {
+        "year": 2024,
+        "type": 2
+      },
+      "status": {
+        "clock": "0.0",
+        "displayClock": "0:00",
+        "period": 4,
+        "isTie": false,
+        "type": {
+          "id": "3",
+          "name": "STATUS_END_PERIOD",
+          "state": "post"
+        }
+      },
+      "competitions": [
+        {
+          "id": "401472765",
+          "date": "2024-01-15T23:30Z",
+          "neutralSite": false,
+          "competitionType": "multi",
+          "timeValid": true,
+          "status": {
+            "clock": "0.0",
+            "displayClock": "0:00",
+            "period": 4,
+            "type": {
+              "id": "3",
+              "name": "STATUS_END_PERIOD",
+              "state": "post"
+            }
+          },
+          "season": {
+            "year": 2024,
+            "type": 2
+          },
+          "competitors": [
+            {
+              "id": "13",
+              "uid": "s:40~l:46~t:13",
+              "type": "team",
+              "order": 0,
+              "homeAway": "home",
+              "winner": true,
+              "score": "112",
+              "team": {
+                "id": "13",
+                "uid": "s:40~l:46~t:13",
+                "location": "Oklahoma City",
+                "name": "Thunder",
+                "abbreviation": "OKC",
+                "displayName": "Oklahoma City Thunder",
+                "shortDisplayName": "Thunder",
+                "color": "007AC1",
+                "isActive": true,
+                "logos": []
+              }
+            },
+            {
+              "id": "14",
+              "uid": "s:40~l:46~t:14",
+              "type": "team",
+              "order": 1,
+              "homeAway": "away",
+              "winner": false,
+              "score": "105",
+              "team": {
+                "id": "14",
+                "uid": "s:40~l:46~t:14",
+                "location": "Los Angeles",
+                "name": "Lakers",
+                "abbreviation": "LAL",
+                "displayName": "Los Angeles Lakers",
+                "shortDisplayName": "Lakers",
+                "color": "552583",
+                "isActive": true,
+                "logos": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

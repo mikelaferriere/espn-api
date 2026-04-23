@@ -1,5 +1,12 @@
 export * as Summary from './summary'
 export * as Scoreboard from './scoreboard'
+export * as Teams from './teams'
+export * as Roster from './roster'
+export * as Draft from './draft'
+export * as Injuries from './injuries'
+export * as News from './news'
+export * as Standings from './standings'
+export * as Playoffs from './playoffs'
 
 export * from './definitions/enums'
 export * from './definitions/types'

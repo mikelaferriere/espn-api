@@ -1,0 +1,89 @@
+{
+  "sports": [
+    {
+      "name": "football",
+      "slug": "football",
+      "leagues": [
+        {
+          "name": "National Football League",
+          "abbreviation": "NFL",
+          "draft": {
+            "rounds": [
+              {
+                "number": 1,
+                "picks": [
+                  {
+                    "round": 1,
+                    "pick": 1,
+                    "overall": 1,
+                    "team": {
+                      "id": "28",
+                      "uid": "s:20~l:28~t:28",
+                      "location": "Chicago",
+                      "name": "Bears",
+                      "abbreviation": "CHI",
+                      "displayName": "Chicago Bears",
+                      "shortDisplayName": "Bears",
+                      "color": "0B162A",
+                      "alternateColor": "C83803",
+                      "isActive": true,
+                      "venue": { "id": "36" },
+                      "links": [],
+                      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png"
+                    },
+                    "athlete": {
+                      "id": 4362691,
+                      "fullName": "Caleb Williams",
+                      "displayName": "Caleb Williams",
+                      "shortName": "C. Williams",
+                      "links": [],
+                      "headshot": "https://a.espncdn.com/i/headshots/college/football/players/10/4362691.png",
+                      "jersey": "18",
+                      "position": { "abbreviation": "QB" },
+                      "team": { "id": "28" },
+                      "active": true
+                    },
+                    "trade": { "note": "", "teams": [] }
+                  },
+                  {
+                    "round": 1,
+                    "pick": 2,
+                    "overall": 2,
+                    "team": {
+                      "id": "24",
+                      "uid": "s:20~l:28~t:24",
+                      "location": "Washington",
+                      "name": "Commanders",
+                      "abbreviation": "WSH",
+                      "displayName": "Washington Commanders",
+                      "shortDisplayName": "Commanders",
+                      "color": "5A1414",
+                      "alternateColor": "FFB612",
+                      "isActive": true,
+                      "venue": { "id": "39" },
+                      "links": [],
+                      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"
+                    },
+                    "athlete": {
+                      "id": 4426385,
+                      "fullName": "Jayden Daniels",
+                      "displayName": "Jayden Daniels",
+                      "shortName": "J. Daniels",
+                      "links": [],
+                      "headshot": "https://a.espncdn.com/i/headshots/college/football/players/10/4426385.png",
+                      "jersey": "5",
+                      "position": { "abbreviation": "QB" },
+                      "team": { "id": "24" },
+                      "active": true
+                    },
+                    "trade": { "note": "", "teams": [] }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
