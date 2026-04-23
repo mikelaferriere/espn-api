@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.0.2
+
+### Patch Changes
+
+- 70fbf7f: another fix
+
 ## 3.0.1
 
 ### Patch Changes
