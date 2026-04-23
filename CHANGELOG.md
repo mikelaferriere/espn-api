@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.0.1
+
+### Patch Changes
+
+- da21fdc: fix deployments
+
 ## 3.0.0
 
 ### Major Changes
