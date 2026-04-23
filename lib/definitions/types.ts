@@ -100,7 +100,11 @@ export interface Competition {
     market: string
     names: string[]
   }[]
-  format: any
+  format: {
+    regulation: {
+      periods: number
+    }
+  }
   startDate: string
   series: Series
   geoBroadcasts: {
@@ -161,7 +165,7 @@ export interface Competitor {
   }[]
   statistics: Statistic[]
   leaders: Leader[]
-  probables: FeaturedAthelete[]
+  probables: FeaturedAthlete[]
   records: Record[]
 }
 
@@ -220,7 +224,7 @@ export interface Status {
     detail: string
     shortDetail: string
   }
-  featuredAthletes: FeaturedAthelete[]
+  featuredAthletes: FeaturedAthlete[]
 }
 
 export interface Athlete {
@@ -238,13 +242,13 @@ export interface Athlete {
   active?: boolean
 }
 
-export interface FeaturedAthelete {
+export interface FeaturedAthlete {
   name: string
   displayName: string
   shortDisplayName: string
   abbreviation: string
   playerId: number
-  athelete: Athlete
+  athlete: Athlete
   team: {
     id: string
   }
@@ -341,7 +345,12 @@ export interface BaseGameDetails {
   gameInfo: {
     venue: Venue
     attendance: number
-    officials: any[]
+    officials: {
+      id: string
+      fullName: string
+      position: string
+      links: Link[]
+    }[]
   }
   drives?: {
     previous: Drive[]
@@ -349,7 +358,10 @@ export interface BaseGameDetails {
   }
   leaders: Leader[]
   plays: Play[]
-  standings: any[]
+  standings: {
+    team: Team
+    record: Record
+  }[]
 }
 
 export interface BoxScore {
@@ -503,4 +515,209 @@ export interface Play {
     }
   }
   // End Baseball Related
+}
+
+export interface ScoreboardOptions {
+  dates?: string // YYYYMMDD or YYYYMMDD-YYYYMMDD for range
+  week?: number // Week number (for football)
+  year?: number // Season year
+  seasontype?: number // 1=preseason, 2=regular, 3=postseason
+  limit?: number // Max results
+}
+
+// Teams endpoint types
+export interface TeamsResponse {
+  sports: {
+    name: string
+    slug: string
+    leagues: {
+      name: string
+      abbreviation: string
+      slug: string
+      teams: {
+        team: TeamDetail
+      }[]
+    }[]
+  }[]
+}
+
+export interface TeamDetail extends Team {
+  record: Record
+  standingSummary: string
+  groups: {
+    id: string
+    name: string
+    abbreviation: string
+  }[]
+  franchise: {
+    uid: string
+    slug: string
+  }
+  venue: Venue
+  logos: Logo[]
+  color: string
+  alternateColor: string
+}
+
+// Roster endpoint types
+export interface RosterResponse {
+  athletes: AthleteDetail[]
+  coach: Coach
+}
+
+export interface AthleteDetail {
+  id: string
+  uid: string
+  fullName: string
+  displayName: string
+  shortName: string
+  headshot: {
+    href: string
+  }
+  jersey: string
+  position: {
+    id: string
+    name: string
+    displayName: string
+    abbreviation: string
+  }
+  age: number
+  dateOfBirth: string
+  weight: number
+  height: number
+  experience: {
+    years: number
+    displayValue: string
+  }
+  active: boolean
+  injuries: {
+    id: string
+    type: string
+    status: {
+      id: string
+      name: string
+      type: string
+      abbreviation: string
+    }
+    date: string
+    returnDate: string
+  }[]
+  contracts?: {
+    details: {
+      year: number
+      type: string
+      value: number
+    }[]
+  }
+  stats: Statistic[]
+}
+
+export interface Coach {
+  id: string
+  uid: string
+  fullName: string
+  displayName: string
+  firstName: string
+  lastName: string
+  experience: number
+}
+
+// Draft endpoint types
+export interface DraftResponse {
+  sports: {
+    name: string
+    slug: string
+    leagues: {
+      name: string
+      abbreviation: string
+      draft: {
+        rounds: DraftRound[]
+      }
+    }[]
+  }[]
+}
+
+export interface DraftRound {
+  number: number
+  picks: DraftPick[]
+}
+
+export interface DraftPick {
+  round: number
+  pick: number
+  overall: number
+  team: Team
+  athlete?: Athlete
+  trade: {
+    note: string
+    teams: {
+      team: Team
+      gave: string[]
+      received: string[]
+    }[]
+  }
+}
+
+// Injuries endpoint types
+export interface InjuriesResponse {
+  sports: {
+    name: string
+    leagues: {
+      name: string
+      abbreviation: string
+      teams: {
+        team: Team
+        injuries: Injury[]
+      }[]
+    }[]
+  }[]
+}
+
+export interface Injury {
+  id: string
+  type: string
+  status: {
+    id: string
+    name: string
+    type: string
+    abbreviation: string
+  }
+  date: string
+  returnDate: string
+  athlete: Athlete
+  details: {
+    position: string
+    type: string
+    side: string
+  }
+}
+
+// News endpoint types
+export interface NewsResponse {
+  articles: {
+    id: string
+    description: string
+    type: string
+    story: string
+    headline: string
+    shortHeadline: string
+    byline: string
+    published: string
+    lastModified: string
+    links: Link[]
+    images: {
+      name: string
+      type: string
+      url: string
+      width: number
+      height: number
+    }[]
+    categories: {
+      id: string
+      type: string
+      team: {
+        id: string
+      }
+    }[]
+  }[]
 }

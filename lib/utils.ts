@@ -15,7 +15,13 @@ export const enumToUrlString = (league: Enums.League): string => {
       return 'football/nfl'
     case Enums.League.NHL:
       return 'hockey/nhl'
+    case Enums.League.NCAAF:
+      return 'football/college-football'
+    case Enums.League.NCAAB:
+      return 'basketball/mens-college-basketball'
+    case Enums.League.MLS:
+      return 'soccer/usa.1'
     default:
-      throw Error(`Leauge (${String(league)}) not supported`)
+      throw Error(`League (${String(league)}) not supported`)
   }
 }
