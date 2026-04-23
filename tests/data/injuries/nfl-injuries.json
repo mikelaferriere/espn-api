@@ -1,0 +1,240 @@
+{
+  "sports": [
+    {
+      "name": "football",
+      "leagues": [
+        {
+          "name": "National Football League",
+          "abbreviation": "NFL",
+          "teams": [
+            {
+              "team": {
+                "id": "12",
+                "uid": "s:20~l:28~t:12",
+                "location": "New England",
+                "name": "Patriots",
+                "abbreviation": "NE",
+                "displayName": "New England Patriots",
+                "shortDisplayName": "Patriots",
+                "color": "002244",
+                "alternateColor": "C60C30",
+                "isActive": true,
+                "venue": { "id": "3888" },
+                "links": [],
+                "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/NE.png"
+              },
+              "injuries": [
+                {
+                  "id": "12345",
+                  "type": "Illness",
+                  "status": {
+                    "id": "1",
+                    "name": "Questionable",
+                    "type": "questionable",
+                    "abbreviation": "Q"
+                  },
+                  "date": "2024-01-10",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 3139477,
+                    "fullName": "Drake Maye",
+                    "displayName": "Drake Maye",
+                    "shortName": "D. Maye",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3139477.png",
+                    "jersey": "10",
+                    "position": { "abbreviation": "QB" },
+                    "team": { "id": "12" }
+                  },
+                  "details": {
+                    "position": "QB",
+                    "type": "Illness",
+                    "side": ""
+                  }
+                },
+                {
+                  "id": "12346",
+                  "type": "Ankle",
+                  "status": {
+                    "id": "2",
+                    "name": "Doubtful",
+                    "type": "doubtful",
+                    "abbreviation": "D"
+                  },
+                  "date": "2024-01-08",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 4361364,
+                    "fullName": "Rhamondre Stevenson",
+                    "displayName": "Rhamondre Stevenson",
+                    "shortName": "R. Stevenson",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4361364.png",
+                    "jersey": "38",
+                    "position": { "abbreviation": "RB" },
+                    "team": { "id": "12" }
+                  },
+                  "details": {
+                    "position": "RB",
+                    "type": "Ankle",
+                    "side": "Left"
+                  }
+                },
+                {
+                  "id": "12347",
+                  "type": "Knee",
+                  "status": {
+                    "id": "3",
+                    "name": "Out",
+                    "type": "out",
+                    "abbreviation": "O"
+                  },
+                  "date": "2024-01-05",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 3126640,
+                    "fullName": "JuJu Smith-Schuster",
+                    "displayName": "JuJu Smith-Schuster",
+                    "shortName": "J. Smith-Schuster",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3126640.png",
+                    "jersey": "9",
+                    "position": { "abbreviation": "WR" },
+                    "team": { "id": "12" }
+                  },
+                  "details": {
+                    "position": "WR",
+                    "type": "Knee",
+                    "side": "Right"
+                  }
+                }
+              ]
+            },
+            {
+              "team": {
+                "id": "28",
+                "uid": "s:20~l:28~t:28",
+                "location": "Carolina",
+                "name": "Panthers",
+                "abbreviation": "CAR",
+                "displayName": "Carolina Panthers",
+                "shortDisplayName": "Panthers",
+                "color": "0085CA",
+                "alternateColor": "101820",
+                "isActive": true,
+                "venue": { "id": "3825" },
+                "links": [],
+                "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/CAR.png"
+              },
+              "injuries": [
+                {
+                  "id": "22345",
+                  "type": "Shoulder",
+                  "status": {
+                    "id": "1",
+                    "name": "Questionable",
+                    "type": "questionable",
+                    "abbreviation": "Q"
+                  },
+                  "date": "2024-01-11",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 3917451,
+                    "fullName": "Bryce Young",
+                    "displayName": "Bryce Young",
+                    "shortName": "B. Young",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3917451.png",
+                    "jersey": "9",
+                    "position": { "abbreviation": "QB" },
+                    "team": { "id": "28" }
+                  },
+                  "details": {
+                    "position": "QB",
+                    "type": "Shoulder",
+                    "side": "Right"
+                  }
+                },
+                {
+                  "id": "22346",
+                  "type": "Hamstring",
+                  "status": {
+                    "id": "3",
+                    "name": "Out",
+                    "type": "out",
+                    "abbreviation": "O"
+                  },
+                  "date": "2024-01-09",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 4426408,
+                    "fullName": "Jonathan Brooks",
+                    "displayName": "Jonathan Brooks",
+                    "shortName": "J. Brooks",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4426408.png",
+                    "jersey": "24",
+                    "position": { "abbreviation": "RB" },
+                    "team": { "id": "28" }
+                  },
+                  "details": {
+                    "position": "RB",
+                    "type": "Hamstring",
+                    "side": ""
+                  }
+                }
+              ]
+            },
+            {
+              "team": {
+                "id": "34",
+                "uid": "s:20~l:28~t:34",
+                "location": "Houston",
+                "name": "Texans",
+                "abbreviation": "HOU",
+                "displayName": "Houston Texans",
+                "shortDisplayName": "Texans",
+                "color": "03202F",
+                "alternateColor": "A71930",
+                "isActive": true,
+                "venue": { "id": "3796" },
+                "links": [],
+                "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/HOU.png"
+              },
+              "injuries": [
+                {
+                  "id": "32345",
+                  "type": "Concussion",
+                  "status": {
+                    "id": "2",
+                    "name": "Doubtful",
+                    "type": "doubtful",
+                    "abbreviation": "D"
+                  },
+                  "date": "2024-01-12",
+                  "returnDate": "",
+                  "athlete": {
+                    "id": 3917344,
+                    "fullName": "C.J. Stroud",
+                    "displayName": "C.J. Stroud",
+                    "shortName": "C. Stroud",
+                    "links": [],
+                    "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3917344.png",
+                    "jersey": "7",
+                    "position": { "abbreviation": "QB" },
+                    "team": { "id": "34" }
+                  },
+                  "details": {
+                    "position": "QB",
+                    "type": "Concussion",
+                    "side": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

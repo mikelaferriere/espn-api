@@ -1,0 +1,152 @@
+{
+  "sports": [
+    {
+      "name": "football",
+      "slug": "football",
+      "leagues": [
+        {
+          "name": "NCAA Football",
+          "abbreviation": "NCAAF",
+          "slug": "college-football",
+          "teams": [
+            {
+              "team": {
+                "id": "2330",
+                "uid": "s:20~l:87~t:2330",
+                "location": "Alabama",
+                "name": "Crimson Tide",
+                "abbreviation": "ALA",
+                "displayName": "Alabama Crimson Tide",
+                "shortDisplayName": "Alabama",
+                "color": "9E1B32",
+                "alternateColor": "FFFFFF",
+                "isActive": true,
+                "venue": {
+                  "id": "3651"
+                },
+                "links": [
+                  {
+                    "rel": ["clubhouse", "desktop", "team"],
+                    "href": "https://www.espn.com/college-football/team/_/id/2330/alabama-crimson-tide",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/scoreboard/2330e.png",
+                "record": {
+                  "name": "Overall",
+                  "abbreviation": "OVR",
+                  "type": "total",
+                  "summary": "12-2"
+                },
+                "standingSummary": "1st in SEC - West",
+                "groups": [
+                  {
+                    "id": "7",
+                    "name": "Southeastern Conference",
+                    "abbreviation": "SEC"
+                  },
+                  {
+                    "id": "9",
+                    "name": "SEC - West",
+                    "abbreviation": "SEC - West"
+                  }
+                ],
+                "franchise": {
+                  "uid": "abc12345-def6-7890-ghij-klmnopqrstuv",
+                  "slug": "alabama-crimson-tide"
+                },
+                "venue": {
+                  "id": "3651",
+                  "fullName": "Bryant-Denny Stadium",
+                  "address": {
+                    "city": "Tuscaloosa",
+                    "country": "USA"
+                  },
+                  "capacity": 101821,
+                  "indoor": false
+                },
+                "logos": [
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/scoreboard/2330e.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": ["full", "default"],
+                    "lastUpdated": "2020-01-01T00:00Z"
+                  }
+                ]
+              }
+            },
+            {
+              "team": {
+                "id": "130",
+                "uid": "s:20~l:87~t:130",
+                "location": "Notre Dame",
+                "name": "Fighting Irish",
+                "abbreviation": "ND",
+                "displayName": "Notre Dame Fighting Irish",
+                "shortDisplayName": "Notre Dame",
+                "color": "002B5C",
+                "alternateColor": "C4A868",
+                "isActive": true,
+                "venue": {
+                  "id": "3874"
+                },
+                "links": [
+                  {
+                    "rel": ["clubhouse", "desktop", "team"],
+                    "href": "https://www.espn.com/college-football/team/_/id/130/notre-dame-fighting-irish",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/scoreboard/130e.png",
+                "record": {
+                  "name": "Overall",
+                  "abbreviation": "OVR",
+                  "type": "total",
+                  "summary": "10-3"
+                },
+                "standingSummary": "Independent",
+                "groups": [
+                  {
+                    "id": "20",
+                    "name": "FBS Independents",
+                    "abbreviation": "FBS Independents"
+                  }
+                ],
+                "franchise": {
+                  "uid": "wxyz1234-abcd-5678-efgh-ijklmnopqrst",
+                  "slug": "notre-dame-fighting-irish"
+                },
+                "venue": {
+                  "id": "3860",
+                  "fullName": "Notre Dame Stadium",
+                  "address": {
+                    "city": "Notre Dame",
+                    "country": "USA"
+                  },
+                  "capacity": 77522,
+                  "indoor": false
+                },
+                "logos": [
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/scoreboard/130e.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": ["full", "default"],
+                    "lastUpdated": "2020-01-01T00:00Z"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

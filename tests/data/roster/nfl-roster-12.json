@@ -1,0 +1,97 @@
+{
+  "athletes": [
+    {
+      "id": "3139477",
+      "uid": "s:20~l:28~a:3139477",
+      "fullName": "Drake Maye",
+      "displayName": "Drake Maye",
+      "shortName": "D. Maye",
+      "headshot": {
+        "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3139477.png"
+      },
+      "jersey": "10",
+      "position": {
+        "id": "8",
+        "name": "Quarterback",
+        "displayName": "Quarterback",
+        "abbreviation": "QB"
+      },
+      "age": 22,
+      "dateOfBirth": "2002-04-30",
+      "weight": 225,
+      "height": 76,
+      "experience": {
+        "years": 1,
+        "displayValue": "1st Season"
+      },
+      "active": true,
+      "injuries": [],
+      "stats": []
+    },
+    {
+      "id": "4361443",
+      "uid": "s:20~l:28~a:4361443",
+      "fullName": "Rhamondre Stevenson",
+      "displayName": "Rhamondre Stevenson",
+      "shortName": "R. Stevenson",
+      "headshot": {
+        "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4361443.png"
+      },
+      "jersey": "38",
+      "position": {
+        "id": "9",
+        "name": "Running Back",
+        "displayName": "Running Back",
+        "abbreviation": "RB"
+      },
+      "age": 26,
+      "dateOfBirth": "1998-02-23",
+      "weight": 227,
+      "height": 72,
+      "experience": {
+        "years": 4,
+        "displayValue": "4th Season"
+      },
+      "active": true,
+      "injuries": [],
+      "stats": []
+    },
+    {
+      "id": "3126528",
+      "uid": "s:20~l:28~a:3126528",
+      "fullName": "DeMario Douglas",
+      "displayName": "DeMario Douglas",
+      "shortName": "D. Douglas",
+      "headshot": {
+        "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3126528.png"
+      },
+      "jersey": "3",
+      "position": {
+        "id": "10",
+        "name": "Wide Receiver",
+        "displayName": "Wide Receiver",
+        "abbreviation": "WR"
+      },
+      "age": 23,
+      "dateOfBirth": "2002-03-15",
+      "weight": 192,
+      "height": 71,
+      "experience": {
+        "years": 2,
+        "displayValue": "2nd Season"
+      },
+      "active": true,
+      "injuries": [],
+      "stats": []
+    }
+  ],
+  "coach": {
+    "id": "1676",
+    "uid": "s:20~l:28~a:1676",
+    "fullName": "Mike Vrabel",
+    "displayName": "Mike Vrabel",
+    "firstName": "Mike",
+    "lastName": "Vrabel",
+    "experience": 8
+  }
+}
