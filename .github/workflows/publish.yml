@@ -50,10 +50,7 @@ jobs:
 
       - name: Publish to npm
         if: env.PACKAGE_VERSION > env.NPM_LATEST_VERSION
-        uses: changesets/action@v1
-        with:
-          publish: npm run publish
+        run: npm publish --provenance --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
           HUSKY: 0
