@@ -4,7 +4,7 @@ A Typescript Wrapper Over the ESPN Public API
 
 **Description:**
 
-This project provides a Typescript wrapper around the ESPN public API, currently supporting functions and type mappings for the "/{sport}/{league}/scoreboard" and "/{sport}/{league}/summary?event={eventid}" endpoints. Use this library to easily consume data from the ESPN API in your Typescript projects.
+This project provides a Typescript wrapper around the ESPN public API, currently supporting functions and type mappings for the "/{sport}/{league}/scoreboard" and "/{sport}/{league}/summary?event={eventid}" endpoints. Use this library to easily consume data from the ESPN API in your Typescript projects
 
 **Features:**
 
