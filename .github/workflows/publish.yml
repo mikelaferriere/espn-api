@@ -27,6 +27,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Ensure latest npm (required for OIDC)
+        run: npm install -g npm@latest
+
       - name: Build Production package
         run: npm run deploy
 
