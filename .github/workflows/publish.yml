@@ -1,8 +1,7 @@
 name: Publish to npm
 
 on:
-  pull_request_target:
-    types: [closed]
+  push:
     branches:
       - main
 
@@ -14,7 +13,7 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    if: true
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
