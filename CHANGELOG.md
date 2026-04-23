@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.0.4
+
+### Patch Changes
+
+- 0b14812: upgrade npm
+
 ## 3.0.3
 
 ### Patch Changes
