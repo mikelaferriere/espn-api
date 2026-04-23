@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.0.6
+
+### Patch Changes
+
+- df30b82: fix script name
+
 ## 3.0.5
 
 ### Patch Changes
