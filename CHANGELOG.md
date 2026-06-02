@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.0.7
+
+### Patch Changes
+
+- 7940ccc: Sync with new changes from official api
+
 ## 3.0.6
 
 ### Patch Changes
