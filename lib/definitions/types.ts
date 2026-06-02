@@ -144,11 +144,19 @@ export interface Series {
   }[]
 }
 
-export interface Record {
-  name: string
-  abbreviation: string
-  type: string
+export interface RecordItem {
+  description?: string
+  type?: string
   summary: string
+  stats?: { name: string; value: number }[]
+}
+
+export interface Record {
+  name?: string
+  abbreviation?: string
+  type?: string
+  summary?: string
+  items?: RecordItem[]
 }
 
 export interface Competitor {

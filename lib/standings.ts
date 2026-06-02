@@ -19,6 +19,12 @@ export interface TeamStanding {
   percentage: string
 }
 
+const getRecordSummary = (record: Record): string | undefined => {
+  if (record?.summary) return record.summary
+  const overallItem = record?.items?.find((item) => item.type === 'total')
+  return overallItem?.summary ?? record?.items?.[0]?.summary
+}
+
 const parseRecordSummary = (
   summary: string
 ): { wins: number; losses: number; ties: number | undefined } => {
@@ -66,9 +72,10 @@ export const fetchStandings = async (
     )
 
     const standings: TeamStanding[] = teamDetails
-      .filter((team) => team.record?.summary)
+      .filter((team) => getRecordSummary(team.record))
       .map((team) => {
-        const { wins, losses, ties } = parseRecordSummary(team.record.summary)
+        const summary = getRecordSummary(team.record)!
+        const { wins, losses, ties } = parseRecordSummary(summary)
         const percentage = calculatePercentage(wins, losses, ties)
 
         return {
