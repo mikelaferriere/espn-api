@@ -83,10 +83,19 @@ export const fetchTeam = (
   const leagueUrlString = enumToUrlString(league)
 
   return axios
-    .get<TeamsResponse>(`${BASE_URL}/${leagueUrlString}/teams/${teamId}`)
+    .get(`${BASE_URL}/${leagueUrlString}/teams/${teamId}`)
     .then(({ data }) => {
-      const team = data.sports[0].leagues[0].teams[0].team
-      return team
+      // ESPN API returns { team: {...} } for individual team endpoints
+      // (previously returned nested sports[0].leagues[0].teams[0].team)
+      if (data.team) {
+        return data.team as TeamDetail
+      }
+      // Fallback for older nested response format
+      const team = data.sports?.[0]?.leagues?.[0]?.teams?.[0]?.team
+      if (!team) {
+        throw new Error('Unexpected team detail response format from ESPN API')
+      }
+      return team as TeamDetail
     })
     .catch((error: unknown) => {
       const message =

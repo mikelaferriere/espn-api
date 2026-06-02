@@ -65,20 +65,22 @@ export const fetchStandings = async (
       teamEntries.map((entry) => fetchTeam(league, entry.team.id))
     )
 
-    const standings: TeamStanding[] = teamDetails.map((team) => {
-      const { wins, losses, ties } = parseRecordSummary(team.record.summary)
-      const percentage = calculatePercentage(wins, losses, ties)
+    const standings: TeamStanding[] = teamDetails
+      .filter((team) => team.record?.summary)
+      .map((team) => {
+        const { wins, losses, ties } = parseRecordSummary(team.record.summary)
+        const percentage = calculatePercentage(wins, losses, ties)
 
-      return {
-        team,
-        record: team.record,
-        standingSummary: team.standingSummary,
-        wins,
-        losses,
-        ...(ties !== undefined && { ties }),
-        percentage,
-      }
-    })
+        return {
+          team,
+          record: team.record,
+          standingSummary: team.standingSummary,
+          wins,
+          losses,
+          ...(ties !== undefined && { ties }),
+          percentage,
+        }
+      })
 
     standings.sort((a, b) => {
       if (b.wins !== a.wins) return b.wins - a.wins
