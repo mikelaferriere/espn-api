@@ -419,6 +419,84 @@ describe('Integration Tests', () => {
         expect.stringContaining('baseball/mlb/scoreboard')
       )
     })
+
+    test('WORLD_CUP teams endpoint uses soccer/fifa.world path', async () => {
+      const worldCupTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'FIFA World Cup',
+                abbreviation: 'FIFA',
+                slug: 'fifa.world',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: worldCupTeamsResponse })
+
+      await fetchTeams(League.WORLD_CUP)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/fifa.world/teams')
+      )
+    })
+
+    test('EUROS teams endpoint uses soccer/uefa.euro path', async () => {
+      const eurosTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'UEFA European Championship',
+                abbreviation: 'UEFA',
+                slug: 'uefa.euro',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: eurosTeamsResponse })
+
+      await fetchTeams(League.EUROS)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/uefa.euro/teams')
+      )
+    })
+
+    test('CHAMPIONS_LEAGUE teams endpoint uses soccer/uefa.champions path', async () => {
+      const championsLeagueTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'UEFA Champions League',
+                abbreviation: 'UCL',
+                slug: 'uefa.champions',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: championsLeagueTeamsResponse })
+
+      await fetchTeams(League.CHAMPIONS_LEAGUE)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/uefa.champions/teams')
+      )
+    })
   })
 
   describe('Barrel export smoke test', () => {

@@ -2,7 +2,7 @@ import { League, SeasonPhase } from '../lib/definitions/enums'
 import { enumToUrlString } from '../lib/utils'
 
 describe('League enum values', () => {
-  test('has all 7 leagues with correct numeric values', () => {
+  test('has all 10 leagues with correct numeric values', () => {
     expect(League.NBA).toBe(0)
     expect(League.MLB).toBe(1)
     expect(League.NFL).toBe(2)
@@ -10,6 +10,9 @@ describe('League enum values', () => {
     expect(League.NCAAF).toBe(4)
     expect(League.NCAAB).toBe(5)
     expect(League.MLS).toBe(6)
+    expect(League.WORLD_CUP).toBe(7)
+    expect(League.EUROS).toBe(8)
+    expect(League.CHAMPIONS_LEAGUE).toBe(9)
   })
 })
 
@@ -49,6 +52,18 @@ describe('enumToUrlString', () => {
 
   test('MLS returns soccer/usa.1', () => {
     expect(enumToUrlString(League.MLS)).toBe('soccer/usa.1')
+  })
+
+  test('WORLD_CUP returns soccer/fifa.world', () => {
+    expect(enumToUrlString(League.WORLD_CUP)).toBe('soccer/fifa.world')
+  })
+
+  test('EUROS returns soccer/uefa.euro', () => {
+    expect(enumToUrlString(League.EUROS)).toBe('soccer/uefa.euro')
+  })
+
+  test('CHAMPIONS_LEAGUE returns soccer/uefa.champions', () => {
+    expect(enumToUrlString(League.CHAMPIONS_LEAGUE)).toBe('soccer/uefa.champions')
   })
 
   test('throws error with "League" (not "Leauge") for invalid league', () => {
