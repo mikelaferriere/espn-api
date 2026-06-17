@@ -6,6 +6,9 @@ export enum League {
   NCAAF = 4,
   NCAAB = 5,
   MLS = 6,
+  WORLD_CUP = 7,
+  EUROS = 8,
+  CHAMPIONS_LEAGUE = 9,
 }
 
 export enum SeasonPhase {
