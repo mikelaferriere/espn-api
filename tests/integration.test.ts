@@ -497,6 +497,136 @@ describe('Integration Tests', () => {
         expect.stringContaining('soccer/uefa.champions/teams')
       )
     })
+
+    test('ENG_PREMIER_LEAGUE teams endpoint uses soccer/eng.1 path', async () => {
+      const engPremierLeagueTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'English Premier League',
+                abbreviation: 'Premier League',
+                slug: 'eng.1',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: engPremierLeagueTeamsResponse })
+
+      await fetchTeams(League.ENG_PREMIER_LEAGUE)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/eng.1/teams')
+      )
+    })
+
+    test('ENG_CHAMPIONSHIP teams endpoint uses soccer/eng.2 path', async () => {
+      const engChampionshipTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'English League Championship',
+                abbreviation: 'EFL Championship',
+                slug: 'eng.2',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: engChampionshipTeamsResponse })
+
+      await fetchTeams(League.ENG_CHAMPIONSHIP)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/eng.2/teams')
+      )
+    })
+
+    test('ENG_LEAGUE_ONE teams endpoint uses soccer/eng.3 path', async () => {
+      const engLeagueOneTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'English League One',
+                abbreviation: 'EFL League One',
+                slug: 'eng.3',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: engLeagueOneTeamsResponse })
+
+      await fetchTeams(League.ENG_LEAGUE_ONE)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/eng.3/teams')
+      )
+    })
+
+    test('ENG_LEAGUE_TWO teams endpoint uses soccer/eng.4 path', async () => {
+      const engLeagueTwoTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'English League Two',
+                abbreviation: 'EFL League Two',
+                slug: 'eng.4',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: engLeagueTwoTeamsResponse })
+
+      await fetchTeams(League.ENG_LEAGUE_TWO)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/eng.4/teams')
+      )
+    })
+
+    test('ENG_NATIONAL_LEAGUE teams endpoint uses soccer/eng.5 path', async () => {
+      const engNationalLeagueTeamsResponse = {
+        sports: [
+          {
+            name: 'soccer',
+            slug: 'soccer',
+            leagues: [
+              {
+                name: 'English National League',
+                abbreviation: 'National League',
+                slug: 'eng.5',
+                teams: [],
+              },
+            ],
+          },
+        ],
+      }
+      mockedGet.mockResolvedValue({ data: engNationalLeagueTeamsResponse })
+
+      await fetchTeams(League.ENG_NATIONAL_LEAGUE)
+
+      expect(mockedGet).toHaveBeenCalledWith(
+        expect.stringContaining('soccer/eng.5/teams')
+      )
+    })
   })
 
   describe('Barrel export smoke test', () => {

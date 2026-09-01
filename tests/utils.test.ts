@@ -2,7 +2,7 @@ import { League, SeasonPhase } from '../lib/definitions/enums'
 import { enumToUrlString } from '../lib/utils'
 
 describe('League enum values', () => {
-  test('has all 10 leagues with correct numeric values', () => {
+  test('has all 14 leagues with correct numeric values', () => {
     expect(League.NBA).toBe(0)
     expect(League.MLB).toBe(1)
     expect(League.NFL).toBe(2)
@@ -13,6 +13,11 @@ describe('League enum values', () => {
     expect(League.WORLD_CUP).toBe(7)
     expect(League.EUROS).toBe(8)
     expect(League.CHAMPIONS_LEAGUE).toBe(9)
+    expect(League.ENG_PREMIER_LEAGUE).toBe(10)
+    expect(League.ENG_CHAMPIONSHIP).toBe(11)
+    expect(League.ENG_LEAGUE_ONE).toBe(12)
+    expect(League.ENG_LEAGUE_TWO).toBe(13)
+    expect(League.ENG_NATIONAL_LEAGUE).toBe(14)
   })
 })
 
@@ -64,6 +69,26 @@ describe('enumToUrlString', () => {
 
   test('CHAMPIONS_LEAGUE returns soccer/uefa.champions', () => {
     expect(enumToUrlString(League.CHAMPIONS_LEAGUE)).toBe('soccer/uefa.champions')
+  })
+
+  test('ENG_PREMIER_LEAGUE returns soccer/eng.1', () => {
+    expect(enumToUrlString(League.ENG_PREMIER_LEAGUE)).toBe('soccer/eng.1')
+  })
+
+  test('ENG_CHAMPIONSHIP returns soccer/eng.2', () => {
+    expect(enumToUrlString(League.ENG_CHAMPIONSHIP)).toBe('soccer/eng.2')
+  })
+
+  test('ENG_LEAGUE_ONE returns soccer/eng.3', () => {
+    expect(enumToUrlString(League.ENG_LEAGUE_ONE)).toBe('soccer/eng.3')
+  })
+
+  test('ENG_LEAGUE_TWO returns soccer/eng.4', () => {
+    expect(enumToUrlString(League.ENG_LEAGUE_TWO)).toBe('soccer/eng.4')
+  })
+
+  test('ENG_NATIONAL_LEAGUE returns soccer/eng.5', () => {
+    expect(enumToUrlString(League.ENG_NATIONAL_LEAGUE)).toBe('soccer/eng.5')
   })
 
   test('throws error with "League" (not "Leauge") for invalid league', () => {

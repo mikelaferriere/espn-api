@@ -27,6 +27,16 @@ export const enumToUrlString = (league: Enums.League): string => {
       return 'soccer/uefa.euro'
     case Enums.League.CHAMPIONS_LEAGUE:
       return 'soccer/uefa.champions'
+    case Enums.League.ENG_PREMIER_LEAGUE:
+      return 'soccer/eng.1'
+    case Enums.League.ENG_CHAMPIONSHIP:
+      return 'soccer/eng.2'
+    case Enums.League.ENG_LEAGUE_ONE:
+      return 'soccer/eng.3'
+    case Enums.League.ENG_LEAGUE_TWO:
+      return 'soccer/eng.4'
+    case Enums.League.ENG_NATIONAL_LEAGUE:
+      return 'soccer/eng.5'
     default:
       throw Error(`League (${String(league)}) not supported`)
   }
