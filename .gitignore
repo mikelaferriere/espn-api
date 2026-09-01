@@ -26,7 +26,7 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (http://gruntjs.com/creating-grunt-tasks#about-the-gruntfile)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -43,7 +43,7 @@ node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
-web_modules/
+web_modules
 
 # TypeScript cache
 *.tsbuildinfo
@@ -83,7 +83,7 @@ web_modules/
 .cache
 .parcel-cache
 
-# Next.js build output
+# Next.js build output (https://nextjs.org/)
 .next
 out
 
@@ -93,21 +93,14 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+# Comment in the public line in if you use a Gatsby Site
+# https://www.gatsbyjs.com/docs/quick-start/
+# public/
 
 # vuepress build output
 .vuepress/dist
 
-# vuepress v2.x temp and cache directory
-.temp
-.cache
-
-# Docusaurus cache and generated files
-.docusaurus
-
-# Serverless directories
+# Serverless directories (https://serverless.com/)
 .serverless/
 
 # FuseBox cache
@@ -132,3 +125,7 @@ dist
 node_modules
 build
 *.tsbuildinfo
+
+# Agent session / local tooling state
+.psyche/
+.local/
