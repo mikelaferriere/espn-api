@@ -1,21 +1,20 @@
-name: Create Versioning PR
+name: Release to npm
 
 on:
   push:
-    paths:
-      - '.changeset/**'
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 permissions:
   contents: write
-  pull-requests: write
+  id-token: write # Required for OIDC trusted publishing
+
+env:
+  HUSKY: 0 # Disable git hooks in CI (the pre-commit hook is interactive)
 
 jobs:
-  version:
-    name: Create Versioning PR
+  release:
+    name: Version and publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -25,15 +24,90 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 24
+          cache: npm
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Create Release Pull Request
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          title: 'Version Packages'
+      - name: Ensure latest npm (required for OIDC)
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Check for changesets
+        shell: bash
+        run: |
+          set -e
+          COUNT=$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' | wc -l)
+          if [ "$COUNT" -gt 0 ]; then
+            echo "HAS_CHANGESTETS=true" >> "$GITHUB_ENV"
+          else
+            echo "HAS_CHANGESTETS=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Run changeset version
+        if: env.HAS_CHANGESTETS == 'true'
+        run: npx changeset version
+
+      - name: Commit and push version changes
+        if: env.HAS_CHANGESTETS == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HUSKY: 0
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json CHANGELOG.md .changeset/
+          if git diff --cached --quiet; then
+            echo "No version changes to commit"
+          else
+            git commit -m "Version Packages"
+            # Pushing with GITHUB_TOKEN does not re-trigger this workflow
+            git push origin HEAD:main
+          fi
+
+      - name: Publish to npm (changeset path)
+        if: env.HAS_CHANGESTETS == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish --provenance --access public
+
+      - name: Publish outstanding version (no changesets on this push)
+        if: env.HAS_CHANGESTETS != 'true'
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          NAME=$(node -p "require('./package.json').name")
+          LOCAL=$(node -p "require('./package.json').version")
+          LATEST=$(npm view "$NAME" version 2>/dev/null || echo "0.0.0")
+          CMP=$(node -e 'const p=v=>v.replace(/-.*$/,"").split(".").map(Number);const [a,b]=process.argv.slice(1);const A=p(a),B=p(b);process.stdout.write(String((A[0]-B[0])||(A[1]-B[1])||(A[2]-B[2])))' "$LOCAL" "$LATEST")
+          if [ "$CMP" -gt 0 ]; then
+            echo "Local $LOCAL is ahead of npm $LATEST - publishing"
+            npm publish --provenance --access public
+          else
+            echo "Local $LOCAL not ahead of npm $LATEST - nothing to publish"
+          fi
+
+      - name: Create git tag and GitHub Release
+        if: env.HAS_CHANGESTETS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          VERSION=$(node -p "require('./package.json').version")
+          git tag -f "v${VERSION}"
+          git push origin "v${VERSION}"
+          ENTRY=$(awk -v h="## ${VERSION}" '$0==h{f=1;next}/^## /{f=0}f' CHANGELOG.md)
+          if [ -n "$ENTRY" ]; then
+            gh release create "v${VERSION}" --title "v${VERSION}" --notes "$ENTRY"
+          else
+            gh release create "v${VERSION}" --title "v${VERSION}"
+          fi
