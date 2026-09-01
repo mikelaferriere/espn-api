@@ -1,0 +1,57 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    if: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Ensure latest npm (required for OIDC)
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - name: Build Production package
+        run: npm run deploy
+
+      - name: Get package info
+        id: package_info
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
+
+      - name: Get latest npm version
+        id: npm_version
+        run: |
+          NPM_LATEST_VERSION=$(npm view ${{ env.PACKAGE_NAME }} version || echo "0.0.0")
+          echo "NPM_LATEST_VERSION=$NPM_LATEST_VERSION" >> $GITHUB_ENV
+        continue-on-error: true
+
+      - name: Publish to npm
+        if: env.PACKAGE_VERSION > env.NPM_LATEST_VERSION
+        run: npm publish --provenance --access public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUSKY: 0
