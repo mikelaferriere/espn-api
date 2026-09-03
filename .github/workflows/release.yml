@@ -1,5 +1,10 @@
 name: Create Versioning PR
 
+# Optional: when a changeset lands on main (by hand, or pushed by the
+# Auto patch changeset workflow after a merge) this opens a "Version
+# Packages" PR. Merging it is NOT required for releases - the Trigger
+# release workflow versions and publishes any pending changesets on the
+# next push to main, so you can close this PR without effect.
 on:
   push:
     paths:
@@ -34,6 +39,7 @@ jobs:
         uses: changesets/action@v1
         with:
           title: 'Version Packages'
+          skip: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HUSKY: 0

@@ -1,0 +1,131 @@
+name: Trigger release
+
+# Option B: trigger a version bump and npm publish from the Actions UI
+# (Actions > Trigger release > Run workflow > main).
+#
+# Also the single release pipeline for main: when changesets are already
+# present in the tree (added by Option A or by hand), any push to main
+# version-bumps and publishes them - no manual "Version Packages" PR merge
+# is required.
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump to release'
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write # Required for OIDC trusted publishing
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  HUSKY: 0 # Disable git hooks in CI (the pre-commit hook is interactive)
+
+jobs:
+  release:
+    name: Version and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Ensure latest npm (required for OIDC)
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - name: Build
+        run: npm run deploy
+
+      - name: Test
+        run: npm test
+
+      - name: Create changeset from dispatch input
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Creating ${{ inputs.bump }} changeset..."
+          printf -- "---\n'@mikelaferriere/espn-api': ${{ inputs.bump }}\n---\n\nTriggered release (${{ inputs.bump }}) from the Actions UI.\n" > .changeset/triggered-release.md
+          echo 'Created .changeset/triggered-release.md'
+
+      - name: Check for changesets
+        id: changesets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' -print -quit 2>/dev/null)" ]; then
+            echo 'HAS_CHANGESTS=true' >> "$GITHUB_OUTPUT"
+            echo "Changesets present:"
+            find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md'
+          else
+            echo 'HAS_CHANGESTS=false' >> "$GITHUB_OUTPUT"
+            echo 'No changesets - nothing to release'
+          fi
+
+      - name: Version packages
+        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
+        run: npx changeset version
+
+      - name: Commit and push version changes
+        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package.json package-lock.json CHANGELOG.md .changeset/
+          if git diff --cached --quiet; then
+            echo 'No version changes to commit'
+            exit 0
+          fi
+          git commit -m 'Version Packages'
+          # Pushing with GITHUB_TOKEN does not re-trigger this workflow,
+          # so the version bump cannot loop back into this pipeline.
+          git push origin HEAD:${{ github.ref_name }}
+          echo "Pushed version bump to ${{ github.ref_name }}"
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish --provenance --access public
+
+      - name: Create git tag and GitHub Release
+        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./package.json').version")
+          git tag -f "v${VERSION}"
+          git push origin "v${VERSION}"
+          ENTRY=$(awk -v h="## ${VERSION}" '$0==h{f=1;next}/^## /{f=0}f' CHANGELOG.md)
+          if [ -n "$ENTRY" ]; then
+            gh release create "v${VERSION}" --title "v${VERSION}" --notes "$ENTRY"
+          else
+            gh release create "v${VERSION}" --title "v${VERSION}"
+          fi
