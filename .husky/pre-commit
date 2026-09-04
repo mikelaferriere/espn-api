@@ -1,2 +1,7 @@
 #!/usr/bin/env sh
-exit 0
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run precommit
+# Changesets are no longer prompted here: the "Auto patch changeset"
+# workflow adds one to PRs that change lib/, and the "Trigger release"
+# workflow (Actions UI) can bump patch/minor/major on demand.
