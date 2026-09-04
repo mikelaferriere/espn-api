@@ -127,7 +127,7 @@ jobs:
             --head "$BRANCH")
           PR_NUMBER=${PR_URL##*/}
           echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          gh pr merge "$PR_NUMBER" --auto --delete-branch
+          gh pr merge "$PR_NUMBER" --auto --squash --delete-branch
           echo "Auto-merge enabled for PR #$PR_NUMBER"
 
       - name: Wait for version PR to merge
