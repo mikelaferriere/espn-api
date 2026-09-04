@@ -1,5 +1,10 @@
 name: Publish to npm
 
+# Fallback publisher: on every push to main, publishes the version in
+# package.json to npm (OIDC trusted publishing) when it is numerically
+# ahead of the version currently on npm. The Trigger release workflow
+# normally handles version bumps, so this job only ever covers a manual
+# version edit committed directly to main.
 on:
   push:
     branches:
@@ -8,6 +13,10 @@ on:
 permissions:
   id-token: write # Required for OIDC
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -34,24 +43,20 @@ jobs:
       - name: Build Production package
         run: npm run deploy
 
-      - name: Get package info
-        id: package_info
-        run: |
-          PACKAGE_NAME=$(node -p "require('./package.json').name")
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
-          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
-
-      - name: Get latest npm version
-        id: npm_version
-        run: |
-          NPM_LATEST_VERSION=$(npm view ${{ env.PACKAGE_NAME }} version || echo "0.0.0")
-          echo "NPM_LATEST_VERSION=$NPM_LATEST_VERSION" >> $GITHUB_ENV
-        continue-on-error: true
-
-      - name: Publish to npm
-        if: env.PACKAGE_VERSION > env.NPM_LATEST_VERSION
-        run: npm publish --provenance --access public
+      - name: Publish outstanding version
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HUSKY: 0
+        run: |
+          set -euo pipefail
+          NAME=$(node -p "require('./package.json').name")
+          LOCAL=$(node -p "require('./package.json').version")
+          LATEST=$(npm view "$NAME" version 2>/dev/null || echo "0.0.0")
+          # Numerical (not lexicographic) semver comparison so 3.10.0 > 3.9.0
+          AHEAD=$(node -e 'const p=v=>v.replace(/-.*$/,"").split(".").map(Number);const [a,b]=process.argv.slice(1);console.log((a[0]-b[0])||(a[1]-b[1])||(a[2]-b[2]))' "$LOCAL" "$LATEST")
+          if [ "$AHEAD" -gt 0 ]; then
+            echo "Local $LOCAL is ahead of npm $LATEST - publishing"
+            npm publish --provenance --access public
+          else
+            echo "Local $LOCAL not ahead of npm $LATEST - nothing to publish"
+          fi

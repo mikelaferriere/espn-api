@@ -2,8 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run precommit
-echo "Running changeset. Please provide details for the change."
-exec < /dev/tty && npx changeset
-if [ -d ".changeset" ]; then
-  git add .changeset/*.md
-fi
+# Changesets are no longer prompted here: the "Auto patch changeset"
+# workflow adds one to PRs that change lib/, and the "Trigger release"
+# workflow (Actions UI) can bump patch/minor/major on demand.

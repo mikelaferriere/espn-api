@@ -132,3 +132,7 @@ dist
 node_modules
 build
 *.tsbuildinfo
+
+# Agent session and local tooling state (session-local artifacts)
+.psyche/
+.local/

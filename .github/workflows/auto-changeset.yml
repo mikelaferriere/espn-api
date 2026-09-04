@@ -1,0 +1,71 @@
+name: Add patch changeset
+
+# Option A: automatically add a patch changeset to PRs that change library
+# code, so a release is published on merge without manually running
+# `npx changeset` before committing. Docs-only PRs do not get a changeset,
+# so they do not trigger a release.
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  add-changeset:
+    name: Add patch changeset
+    runs-on: ubuntu-latest
+    if: github.repository == 'mikelaferriere/espn-api' && github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Detect library changes
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD || true)
+          if printf '%s\n' "$CHANGED" | grep -E -q '^lib/'; then
+            echo 'CHANGES_LIBRARY=true' >> "$GITHUB_OUTPUT"
+            echo "Library files changed:"
+            printf '%s\n' "$CHANGED" | grep -E '^lib/'
+          else
+            echo 'CHANGES_LIBRARY=false' >> "$GITHUB_OUTPUT"
+            echo "No lib/ files changed - no changeset needed"
+          fi
+
+      - name: Create patch changeset
+        if: steps.changes.outputs.CHANGES_LIBRARY == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Skip if the PR already carries a changeset for this merge
+          if [ -n "$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' -print -quit 2>/dev/null)" ]; then
+            echo 'A changeset already exists in this PR - nothing to do'
+            exit 0
+          fi
+          # Write the changeset file directly (same format `npx changeset add` produces)
+          printf -- "---\n'@mikelaferriere/espn-api': patch\n---\n\nPatch release for lib changes in this pull request.\n" > .changeset/patch-release.md
+          echo 'Created .changeset/patch-release.md'
+
+      - name: Commit changeset
+        if: steps.changes.outputs.CHANGES_LIBRARY == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .changeset/
+          if git diff --cached --quiet; then
+            echo 'No changeset to commit (one already existed)'
+          else
+            git commit -m 'chore(changeset): add patch changeset for lib changes'
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
