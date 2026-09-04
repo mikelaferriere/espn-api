@@ -1,18 +1,20 @@
 name: Publish to npm
 
-# Fallback publisher: on every push to main, publishes the version in
+# Publisher for main: on every push to main, publishes the version in
 # package.json to npm (OIDC trusted publishing) when it is numerically
-# ahead of the version currently on npm. The Trigger release workflow
-# normally handles version bumps, so this job only ever covers a manual
-# version edit committed directly to main.
+# ahead of the version currently on npm. This covers the merged
+# "Version Packages" PRs opened by the Trigger release workflow as well
+# as any manual version edit that lands on main through a PR. After a
+# successful publish it creates the v{version} git tag and GitHub Release
+# (skipped if the tag already exists, so re-runs are safe).
 on:
   push:
     branches:
       - main
 
 permissions:
+  contents: write # create + push the v{version} tag
   id-token: write # Required for OIDC
-  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -44,6 +46,7 @@ jobs:
         run: npm run deploy
 
       - name: Publish outstanding version
+        id: publish
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,10 +56,33 @@ jobs:
           LOCAL=$(node -p "require('./package.json').version")
           LATEST=$(npm view "$NAME" version 2>/dev/null || echo "0.0.0")
           # Numerical (not lexicographic) semver comparison so 3.10.0 > 3.9.0
-          AHEAD=$(node -e 'const p=v=>v.replace(/-.*$/,"").split(".").map(Number);const [a,b]=process.argv.slice(1);console.log((a[0]-b[0])||(a[1]-b[1])||(a[2]-b[2]))' "$LOCAL" "$LATEST")
+          AHEAD=$(node -e 'const p=v=>v.replace(/-.*$/, "").split(".").map(Number);const [a, b] = process.argv.slice(1);console.log((a[0] - b[0]) || (a[1] - b[1]) || (a[2] - b[2]))' "$LOCAL" "$LATEST")
           if [ "$AHEAD" -gt 0 ]; then
             echo "Local $LOCAL is ahead of npm $LATEST - publishing"
             npm publish --provenance --access public
+            echo 'PUBLISHED=true' >> "$GITHUB_OUTPUT"
           else
             echo "Local $LOCAL not ahead of npm $LATEST - nothing to publish"
+            echo 'PUBLISHED=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create git tag and GitHub Release
+        if: steps.publish.outputs.PUBLISHED == 'true'
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./package.json').version")
+          if git ls-remote --exit-code --tags origin "v${VERSION}" >/dev/null 2>&1; then
+            echo "Tag v${VERSION} already exists - skipping tag/release creation"
+            exit 0
+          fi
+          git tag -f "v${VERSION}"
+          git push origin "v${VERSION}"
+          ENTRY=$(awk -v h="## ${VERSION}" '$0==h{f=1;next}/^## /{f=0}f' CHANGELOG.md)
+          if [ -n "$ENTRY" ]; then
+            gh release create "v${VERSION}" --title "v${VERSION}" --notes "$ENTRY"
+          else
+            gh release create "v${VERSION}" --title "v${VERSION}"
           fi

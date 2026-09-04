@@ -5,8 +5,21 @@ name: Trigger release
 #
 # Also the single release pipeline for main: when changesets are already
 # present in the tree (added by Option A or by hand), any push to main
-# version-bumps and publishes them - no manual "Version Packages" PR merge
-# is required.
+# version-bumps them - no manual "Version Packages" PR merge is required.
+#
+# Branch protection on main requires "Changes must be made through a
+# pull request", so the version bump is NEVER pushed directly to main.
+# Instead this workflow:
+#   1. builds + tests
+#   2. runs `changeset version` locally
+#   3. commits the bump to a throwaway branch and pushes it
+#   4. opens a "Version Packages" PR against main and enables auto-merge
+#   5. waits for the PR to merge
+#
+# The merge of the version PR is itself a push to main, which re-runs this
+# workflow as a no-op (the changesets were consumed by `changeset version`)
+# and runs the "Publish to npm" workflow, which publishes the new version
+# to npm, creates the v{version} tag and the GitHub Release.
 on:
   workflow_dispatch:
     inputs:
@@ -24,19 +37,19 @@ on:
       - main
 
 permissions:
-  contents: write
-  id-token: write # Required for OIDC trusted publishing
+  contents: write # push the version branch
+  pull-requests: write # open the version PR + enable auto-merge
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 env:
-  HUSKY: 0 # Disable git hooks in CI (the pre-commit hook is interactive)
+  HUSKY: 0 # Disable git hooks in CI
 
 jobs:
   release:
-    name: Version and publish
+    name: Version and open PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -50,11 +63,6 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-
-      - name: Ensure latest npm (required for OIDC)
-        run: |
-          npm install -g npm@latest
-          npm --version
 
       - name: Build
         run: npm run deploy
@@ -89,7 +97,7 @@ jobs:
         if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
         run: npx changeset version
 
-      - name: Commit and push version changes
+      - name: Push version bump to a branch
         if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -97,35 +105,46 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          BRANCH="release/version-bump-${GITHUB_RUN_ID}-$(date -u +%Y%m%d%H%M%S)"
+          git checkout -b "$BRANCH"
           git add package.json package-lock.json CHANGELOG.md .changeset/
-          if git diff --cached --quiet; then
-            echo 'No version changes to commit'
-            exit 0
-          fi
           git commit -m 'Version Packages'
-          # Pushing with GITHUB_TOKEN does not re-trigger this workflow,
-          # so the version bump cannot loop back into this pipeline.
-          git push origin HEAD:${{ github.ref_name }}
-          echo "Pushed version bump to ${{ github.ref_name }}"
+          git push origin "$BRANCH"
+          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
+          echo "Pushed version bump to branch $BRANCH"
 
-      - name: Publish to npm
-        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish --provenance --access public
-
-      - name: Create git tag and GitHub Release
+      - name: Open version PR and enable auto-merge
+        id: pr
         if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          VERSION=$(node -p "require('./package.json').version")
-          git tag -f "v${VERSION}"
-          git push origin "v${VERSION}"
-          ENTRY=$(awk -v h="## ${VERSION}" '$0==h{f=1;next}/^## /{f=0}f' CHANGELOG.md)
-          if [ -n "$ENTRY" ]; then
-            gh release create "v${VERSION}" --title "v${VERSION}" --notes "$ENTRY"
-          else
-            gh release create "v${VERSION}" --title "v${VERSION}"
-          fi
+          PR_URL=$(gh pr create \
+            --title 'Version Packages' \
+            --body 'Version bump from the Trigger release workflow. Merging this PR (auto-merge is enabled) publishes the new version to npm and creates the git tag and GitHub Release.' \
+            --base main \
+            --head "$BRANCH")
+          PR_NUMBER=${PR_URL##*/}
+          echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          gh pr merge "$PR_NUMBER" --auto --delete-branch
+          echo "Auto-merge enabled for PR #$PR_NUMBER"
+
+      - name: Wait for version PR to merge
+        if: steps.changesets.outputs.HAS_CHANGESTS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.pr.outputs.PR_NUMBER }}
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 20); do
+            STATE=$(gh pr view "$PR_NUMBER" --json state --jq .state)
+            if [ "$STATE" = "MERGED" ]; then
+              echo "Version PR #$PR_NUMBER merged - the Publish to npm workflow will now publish, tag, and create the release"
+              exit 0
+            fi
+            echo "Attempt $i/20: PR state = $STATE - waiting 30s"
+            sleep 30
+          done
+          echo "::error::Version PR #$PR_NUMBER was not merged within 10 minutes. Check the PR; the release publishes once it merges."
+          exit 1
