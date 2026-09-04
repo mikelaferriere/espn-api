@@ -1,5 +1,11 @@
 # @mikelaferriere/espn-api
 
+## 3.1.3
+
+### Patch Changes
+
+- Triggered release (patch) from the Actions UI.
+
 ## 3.1.2
 
 ### Patch Changes
